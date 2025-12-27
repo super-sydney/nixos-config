@@ -25,6 +25,7 @@ in
   calibre.enable = true;
   gimp.enable = true;
   gitkraken.enable = true;
+  gnomeExtensionManager.enable = true;
   gnomeTweaks.enable = true;
   inputRemapper.enable = true;
   obsidian.enable = true;

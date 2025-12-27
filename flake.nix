@@ -3,9 +3,6 @@
 
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
-    
-    # Pin GNOME to a specific version (24.11 = GNOME 47)
-    nixpkgs-gnome.url = "github:nixos/nixpkgs/nixos-24.11";
 
     home-manager = {
       url = "github:nix-community/home-manager";
@@ -15,7 +12,7 @@
     nix-flatpak.url = "github:gmodena/nix-flatpak";
   };
 
-  outputs = { self, nixpkgs, nixpkgs-gnome, home-manager, nix-flatpak, ... }@inputs:
+  outputs = { self, nixpkgs, home-manager, nix-flatpak, ... }@inputs:
     let
       system = "x86_64-linux";
       pkgs = import nixpkgs {inherit system; };
@@ -30,17 +27,6 @@
         specialArgs = { inherit inputs; };
         modules = [
           { nixpkgs.config.allowUnfree = true; }
-          
-          # Overlay to use stable GNOME packages
-          {
-            nixpkgs.overlays = [
-              (final: prev: {
-                gnome = nixpkgs-gnome.legacyPackages.${system}.gnome;
-                gnomeExtensions = nixpkgs-gnome.legacyPackages.${system}.gnomeExtensions;
-              })
-            ];
-          }
-          
           nix-flatpak.nixosModules.nix-flatpak
           home-manager.nixosModules.home-manager
         ]

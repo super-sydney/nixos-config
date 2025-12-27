@@ -18,10 +18,7 @@
   boot.loader.grub.useOSProber = true;
 
   # NixOS Modules
-  fish = {
-    enable = true;
-    users = [ "sydney" ];
-  };
+  fish.enable = true;
   flatpak.enable = true;
   steam.enable = true;
   virtualisation.enable = true;

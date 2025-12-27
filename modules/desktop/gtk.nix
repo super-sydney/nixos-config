@@ -73,7 +73,7 @@ in {
     description = "Enable GTK theming configuration.";
   };
 
-  config = lib.mkIf config.gtk.enable {
+  config = lib.mkIf config.gtkTheme.enable {
     gtk = {
       enable = true;
 

@@ -1,4 +1,4 @@
 {
   gnome = import ./gnome;
-  gtk = import ./gtk.nix;
+  gtkTheme = import ./gtk.nix;
 }

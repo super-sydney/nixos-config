@@ -1,5 +1,4 @@
 {
-  gnome = import ./gnome.nix;
-  # gtk = import ./gtk.nix;
-  # stylixConfig = import ./stylix.nix;
+  gnome = import ./gnome;
+  gtk = import ./gtk.nix;
 }

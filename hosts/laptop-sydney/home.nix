@@ -35,6 +35,7 @@ in
 
   # Desktop
   gnome.enable = true;
+  gtk.enable = true;
 
   # Editors
   vscode.enable = true;

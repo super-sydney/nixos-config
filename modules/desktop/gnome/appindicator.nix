@@ -12,7 +12,7 @@
 
     dconf.settings = {
       "org/gnome/shell" = {
-        enabled-extensions = [ "appindicatorsupport@rgcjonar.gmail.com" ];
+        enabled-extensions = [ "appindicatorsupport@rgcjonas.gmail.com" ];
       };
     };
   };

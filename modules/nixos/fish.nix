@@ -1,12 +1,6 @@
 { config, lib, pkgs, ... }:
 
-let
-  cfg = config.fish;
-  mkUserShell = user: { users.users.${user}.shell = pkgs.fish; };
-  shellsForUsers = map mkUserShell cfg.users;
-  mergedUserShells = lib.mkMerge shellsForUsers;
-
-in {
+{
   options.fish = {
     enable = lib.mkOption {
       type = lib.types.bool;
@@ -21,7 +15,13 @@ in {
     };
   };
 
-  config = lib.mkIf cfg.enable ({
-    programs.fish.enable = true;
-  } // mergedUserShells);
+  config = lib.mkIf config.fish.enable (
+    let
+      mkUserShell = user: { users.users.${user}.shell = pkgs.fish; };
+      shellsForUsers = map mkUserShell config.fish.users;
+    in
+    {
+      programs.fish.enable = true;
+    } // lib.mkMerge shellsForUsers
+  );
 }

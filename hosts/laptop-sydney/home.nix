@@ -49,6 +49,14 @@ in
   kitty.enable = true;
   git.enable = true;
 
+  # Gnome extensions
+  gnome.extensions.appindicator.enable = true;
+  gnome.extensions.dash-to-dock.enable = true;
+  gnome.extensions.blur-my-shell.enable = true;
+  gnome.extensions.just-perfection.enable = true;
+  gnome.extensions.vitals.enable = true;
+  gnome.extensions.user-themes.enable = true;
+
   programs.home-manager.enable = true;
 
   home.stateVersion = "25.11";

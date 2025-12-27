@@ -7,7 +7,7 @@ let
 
     src = pkgs.fetchurl {
       url = "https://github.com/ful1e5/BreezeX_Cursor/releases/download/v2.0.1/BreezeX-Dark.tar.xz";
-      sha256 = "0000000000000000000000000000000000000000000000000000";
+      sha256 = "jN90NGaw8VZf5fKQ3UjvTALZF3hFjQ08xWQ3UVJVtlM=";
     };
 
     sourceRoot = ".";
@@ -24,15 +24,22 @@ let
 
     src = pkgs.fetchurl {
       url = "https://github.com/vinceliuice/Tela-icon-theme/archive/refs/tags/2025-02-10.tar.gz";
-      sha256 = "0000000000000000000000000000000000000000000000000000";
+      sha256 = "sfPnbjB71IsX8L9V0vWnzp9EWxJ/Qn4R95pjKnnjz08=";
     };
 
-    nativeBuildInputs = with pkgs; [ bash ];
+    nativeBuildInputs = with pkgs; [ bash gtk3 ];
+
+    patchPhase = ''
+      patchShebangs install.sh
+    '';
 
     installPhase = ''
-      chmod +x install.sh
-      ./install.sh -c purple -d $out/share/icons -n Tela-purple
+      ./install.sh -c purple -d $out/share/icons -n Tela
     '';
+
+    # Skip fixupPhase entirely - no need to scan 19k+ icon files
+    # for shebangs, references, or binary patching
+    dontFixup = true;
   };
 
   catppuccinMochaMauve = pkgs.stdenv.mkDerivation {
@@ -41,7 +48,7 @@ let
 
     src = pkgs.fetchurl {
       url = "https://github.com/catppuccin/gtk/releases/download/v1.0.3/catppuccin-mocha-mauve-standard+default.zip";
-      sha256 = "0000000000000000000000000000000000000000000000000000";
+      sha256 = "y6zaxhYfmMMV+4Z0DiFCbvbdpk8K1pFXzyjzod2kRv4=";
     };
 
     nativeBuildInputs = with pkgs; [ unzip ];
@@ -50,7 +57,7 @@ let
 
     installPhase = ''
       mkdir -p $out/share/themes
-      cp -r catppuccin-mocha-mauve-standard+default $out/share/themes/Catppuccin-Mocha-Standard-Mauve-Dark
+      cp -r catppuccin-mocha-mauve-standard+default* $out/share/themes/
 
       # Also make config directories available for symlinking
       mkdir -p $out/config
@@ -71,13 +78,13 @@ in {
       enable = true;
 
       iconTheme = {
-        name = "Tela-purple";
+        name = "Tela-purple-dark";
         package = telaPurple;
       };
 
       # Catppuccin GTK/Shell theme (ensure the name matches the package variant)
       theme = {
-        name = "Catppuccin-Mocha-Standard-Mauve-Dark";
+        name = "catppuccin-mocha-mauve-standard+default";
         package = catppuccinMochaMauve;
       };
 
@@ -87,21 +94,13 @@ in {
       };
 
       gtk3.extraConfig = {
-        Settings = ''
-          gtk-application-prefer-dark-theme = true
-        '';
+        gtk-application-prefer-dark-theme = true;
       };
 
       gtk4.extraConfig = {
-        Settings = ''
-          gtk-application-prefer-dark-theme = true
-        '';
+        gtk-application-prefer-dark-theme = true;
       };
     };
-
-    # Copy GTK config directories to ~/.config
-    xdg.configFile."gtk-3.0".source = "${catppuccinMochaMauve}/config/gtk-3.0";
-    xdg.configFile."gtk-4.0".source = "${catppuccinMochaMauve}/config/gtk-4.0";
 
     dconf.settings = {
       "org/gnome/shell" = {
@@ -113,7 +112,7 @@ in {
       };
 
       "org/gnome/shell/extensions/user-theme" = {
-        name = "Catppuccin-Mocha-Standard-Mauve-Dark";
+        name = "catppuccin-mocha-mauve-standard+default";
       };
 
       # Set GNOME accent color to Catppuccin Mocha Mauve

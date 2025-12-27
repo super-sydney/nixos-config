@@ -67,7 +67,7 @@ let
   };
 
 in {
-  options.gtk.enable = lib.mkOption {
+  options.gtkTheme.enable = lib.mkOption {
     type = lib.types.bool;
     default = false;
     description = "Enable GTK theming configuration.";

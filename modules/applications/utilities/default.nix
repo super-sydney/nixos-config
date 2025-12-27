@@ -2,6 +2,7 @@
   calibre = import ./calibre.nix;
   gimp = import ./gimp.nix;
   gitkraken = import ./gitkraken.nix;
+  gnomeTweaks = import ./gnome-tweaks.nix;
   inputRemapper = import ./input-remapper.nix;
   obsidian = import ./obsidian.nix;
   opentabletdriver = import ./opentabletdriver.nix;

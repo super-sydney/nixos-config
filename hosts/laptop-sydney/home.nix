@@ -11,9 +11,10 @@ in
   prismlauncher.enable = true;
 
   # Communication
-  discord.enable = true;
+  # discord.enable = true;
   mattermost.enable = true;
   signalDesktop.enable = true;
+  vesktop.enable = true;
 
   # Media
   jellyfinMediaPlayer.enable = true;
@@ -24,6 +25,7 @@ in
   calibre.enable = true;
   gimp.enable = true;
   gitkraken.enable = true;
+  gnomeTweaks.enable = true;
   inputRemapper.enable = true;
   obsidian.enable = true;
   opentabletdriver.enable = true;

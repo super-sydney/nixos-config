@@ -1,0 +1,18 @@
+{ config, lib, ... }:
+
+{
+  dconf.settings = {
+    "org/gnome/shell" = {
+      disable-user-extensions = false;
+      favorite-apps = ["app.zen_browser.zen.desktop" "org.gnome.nautilus.desktop" "obsidian.desktop" "org.jellyfin.JellyfinDesktop.desktop"];
+    };
+
+    "org/gnome/shell/keybindings" = {
+      show-screenshot-ui = [ "<Shift><Super>s" ];
+    };
+
+    "org/gnome/shell/app-switcher" = {
+      current-workspace-only = true;
+    };
+  };
+}

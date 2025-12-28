@@ -10,8 +10,14 @@
       home = [ "<Super>f" ];
       play = [ "Pause" "<Control><Delete>" ];
       screensaver = [ "<Super>Escape" ];
-      terminal = [ "<Super>t" ];
       www = [ "<Super>b" ];
+      custom-keybindings = [ "/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/terminal/" ];
+    };
+
+    "org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/terminal" = {
+      binding = "<Super>t";
+      command = "kitty";
+      name = "Open Kitty";
     };
 
     "org/gnome/settings-daemon/plugins/power" = {

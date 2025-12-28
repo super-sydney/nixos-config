@@ -2,8 +2,8 @@
 
 {
   home.packages = with pkgs; [
-    nerd-fonts.fira-mono
-    nerd-fonts.fira-code
+    nerd-fonts.ubuntu-sans
+    fira-code
   ];
 
   dconf.settings = {
@@ -12,13 +12,13 @@
       clock-show-seconds = true;
       clock-show-weekday = true;
       color-scheme = "prefer-dark";
-      document-font-name = "FiraCode Nerd Font 11";
+      document-font-name = "UbuntuSans Nerd Font 11";
       enable-animations = true;
       font-antialiasing = "grayscale";
       font-hinting = "full";
-      font-name = "FiraCode Nerd Font Propo 12";
+      font-name = "UbuntuSans Nerd Font 12";
       gtk-enable-primary-paste = false;
-      monospace-font-name = "FiraMono Nerd Font 12";
+      monospace-font-name = "FiraCode Nerd Font Mono 11";
       show_battery_percentage = true;
     };
   };

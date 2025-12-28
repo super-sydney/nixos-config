@@ -1,4 +1,4 @@
-{ lib, ... }:
+{ lib, config, ... }:
 
 {
   options.fish.enable = lib.mkOption {
@@ -7,5 +7,7 @@
     description = "Enable Fish shell system-wide.";
   };
 
-  config.programs.fish.enable = lib.mkDefault false;
+  config = lib.mkIf config.fish.enable {
+    programs.fish.enable = true;
+  };
 }

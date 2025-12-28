@@ -35,11 +35,12 @@
       };
 
       "org/gnome/shell/extensions/blur-my-shell/dash-to-dock" = {
-        blur=false;
+        blur=true;
         brightness=0.6;
+        override-background = false;
         pipeline="pipeline_default";
         sigma=30;
-        static-blur=true;
+        static-blur=false;
         style-dash-to-dock=0;
       };
 

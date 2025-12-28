@@ -23,9 +23,20 @@
         enabled-extensions = [ "arcmenu@arcmenu.com" ];
       };
 
-      # "org/gnome/shell/extensions/arcmenu" = {
-        
-      # };
+      "org/gnome/shell/extensions/arcmenu" = {
+        hide-overview-on-arcmenu-open = true;
+        hide-overview-on-startup = true;
+        menu-button-appearance = "Icon";
+        menu-button-icon = "resource:///org/gnome/shell/extensions/arcmenu/icons/scalable/actions/distro-nixos-symbolic.svg";
+        menu-button-left-click-action = "ArcMenu";
+        menu-button-padding = -1; # default
+        menu-button-position-offset = 0;
+        menu-layout="Default";
+        multi-monitor = true;
+        override-menu-theme = false;
+        position-in-panel="Left";
+        show-activities-button = true;
+      };
     };
   };
 }

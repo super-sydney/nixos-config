@@ -9,6 +9,7 @@ in
 {
   imports = [
     ./appindicator.nix
+    ./arcmenu.nix
     ./blur-my-shell.nix
     ./dash-to-dock.nix
     ../dconf

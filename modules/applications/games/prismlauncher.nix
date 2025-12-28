@@ -9,5 +9,7 @@
 
   config = lib.mkIf config.prismlauncher.enable {
     home.packages = with pkgs; [ prismlauncher ];
+
+    programs.java.enable = true;
   };
 }

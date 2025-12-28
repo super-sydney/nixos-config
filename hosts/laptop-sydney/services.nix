@@ -11,6 +11,28 @@
     variant = "";
   };
 
+  # Power profiles daemon
+  services.power-profiles-daemon.enable = true;
+  services.upower.enable = true;
+
+  # XDG portals (GNOME primary with GTK fallback)
+  xdg.portal = {
+    enable = true;
+    extraPortals = [ pkgs.xdg-desktop-portal-gnome pkgs.xdg-desktop-portal-gtk ];
+  };
+
+  # GVFS for Trash, network mounts, MTP, etc.
+  services.gvfs.enable = true;
+
+  # Thumbnails support via Tumbler
+  services.tumbler.enable = true;
+
+   # Bluetooth (BlueZ)
+  hardware.bluetooth = {
+    enable = true;
+    powerOnBoot = true;
+  };
+
   # Printing
   services.printing.enable = true;
 

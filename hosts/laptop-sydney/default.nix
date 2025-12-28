@@ -12,6 +12,15 @@
   # Enable flakes & nix command
   nix.settings.experimental-features = [ "nix-command" "flakes" ];
 
+  # Optimise store contents and enable automatic GC
+  nix.settings.auto-optimise-store = true;
+  nix.optimise.automatic = true;
+  nix.gc = {
+    automatic = true;
+    dates = "weekly"; # run gc weekly
+    options = "--delete-older-than 7d"; # keep last 7 days of generations
+  };
+
   # Bootloader settings
   boot.loader.grub.enable = true;
   boot.loader.grub.device = "/dev/vda";

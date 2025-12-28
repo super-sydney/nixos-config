@@ -8,6 +8,7 @@
 
   dconf.settings = {
     "org/gnome/desktop/interface" = {
+      accent-color = "purple";
       clock-format = "24h";
       clock-show-seconds = true;
       clock-show-weekday = true;

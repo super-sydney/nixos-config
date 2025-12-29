@@ -140,6 +140,10 @@
                 arrterian.nix-env-selector
               ]);
             userSettings = {
+              "editor.defaultFormatter" = "jnoortheen.nix-ide";
+              "editor.formatOnSave" = true;
+
+              "nix.formatterPath" = "nixfmt";
             };
           };
         };

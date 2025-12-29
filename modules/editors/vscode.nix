@@ -1,4 +1,9 @@
-{ config, pkgs, lib, ... }:
+{
+  config,
+  pkgs,
+  lib,
+  ...
+}:
 
 {
   options.vscode.enable = lib.mkOption {
@@ -24,11 +29,16 @@
             shd101wyy.markdown-preview-enhanced
             usernamehw.errorlens
           ];
-        in {
+        in
+        {
           default = {
             extensions = defaultExtensions;
             userSettings = {
-              "editor.fontFamily" = [ "FiraCode" "Droid Sans Mono" "monospace" ];
+              "editor.fontFamily" = [
+                "FiraCode"
+                "Droid Sans Mono"
+                "monospace"
+              ];
               "editor.fontLigatures" = true;
               "editor.fontSize" = 16;
               "editor.formatOnSave" = true;
@@ -82,10 +92,12 @@
           };
 
           python = {
-            extensions = defaultExtensions ++ (with pkgs.vscode-extensions; [
-              ms-python.python
-              ms-python.vscode-pylance
-            ]);
+            extensions =
+              defaultExtensions
+              ++ (with pkgs.vscode-extensions; [
+                ms-python.python
+                ms-python.vscode-pylance
+              ]);
 
             userSettings = {
               # "python.formatting.provider" = "black";
@@ -96,31 +108,37 @@
           };
 
           javascript = {
-            extensions = defaultExtensions ++ (with pkgs.vscode-extensions; [
-              dbaeumer.vscode-eslint
-            ]);
+            extensions =
+              defaultExtensions
+              ++ (with pkgs.vscode-extensions; [
+                dbaeumer.vscode-eslint
+              ]);
             userSettings = {
             };
           };
 
           # C / C++ development profile
           c-cpp = {
-            extensions = defaultExtensions ++ (with pkgs.vscode-extensions; [
-              ms-vscode.cpptools
-              ms-vscode.cmake-tools
-              twxs.cmake
-              ms-vscode.makefile-tools
-            ]);
+            extensions =
+              defaultExtensions
+              ++ (with pkgs.vscode-extensions; [
+                ms-vscode.cpptools
+                ms-vscode.cmake-tools
+                twxs.cmake
+                ms-vscode.makefile-tools
+              ]);
             userSettings = {
             };
           };
 
           # Nix development profile
           nix = {
-            extensions = defaultExtensions ++ (with pkgs.vscode-extensions; [
-              jnoortheen.nix-ide
-              arrterian.nix-env-selector
-            ]);
+            extensions =
+              defaultExtensions
+              ++ (with pkgs.vscode-extensions; [
+                jnoortheen.nix-ide
+                arrterian.nix-env-selector
+              ]);
             userSettings = {
             };
           };

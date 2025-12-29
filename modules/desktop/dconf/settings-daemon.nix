@@ -8,10 +8,15 @@
 
     "org/gnome/settings-daemon/plugins/media-keys" = {
       home = [ "<Super>f" ];
-      play = [ "Pause" "<Control><Delete>" ];
+      play = [
+        "Pause"
+        "<Control><Delete>"
+      ];
       screensaver = [ "<Super>Escape" ];
       www = [ "<Super>b" ];
-      custom-keybindings = [ "/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/terminal/" ];
+      custom-keybindings = [
+        "/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/terminal/"
+      ];
     };
 
     "org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/terminal" = {

@@ -1,4 +1,9 @@
-{ config, pkgs, lib, ... }:
+{
+  config,
+  pkgs,
+  lib,
+  ...
+}:
 
 {
   options.gnome.extensions.arcmenu.enable = lib.mkOption {
@@ -31,10 +36,10 @@
         menu-button-left-click-action = "ArcMenu";
         menu-button-padding = -1; # default
         menu-button-position-offset = 0;
-        menu-layout="Default";
+        menu-layout = "Default";
         multi-monitor = true;
         override-menu-theme = false;
-        position-in-panel="Left";
+        position-in-panel = "Left";
         show-activities-button = true;
       };
     };

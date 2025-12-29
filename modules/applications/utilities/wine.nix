@@ -1,4 +1,9 @@
-{ pkgs, lib, config, ... }:
+{
+  pkgs,
+  lib,
+  config,
+  ...
+}:
 
 {
   options.wine.enable = lib.mkOption {
@@ -8,6 +13,10 @@
   };
 
   config = lib.mkIf config.wine.enable {
-    home.packages = with pkgs; [ wine winetricks protontricks ];
+    home.packages = with pkgs; [
+      wine
+      winetricks
+      protontricks
+    ];
   };
 }

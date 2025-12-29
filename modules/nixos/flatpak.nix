@@ -1,4 +1,9 @@
-{ pkgs, lib, config, ... }:
+{
+  pkgs,
+  lib,
+  config,
+  ...
+}:
 
 {
   options.flatpak.enable = lib.mkOption {
@@ -11,14 +16,17 @@
     services.flatpak = {
       enable = true;
       packages = [
-          "com.github.tchx84.Flatseal"
+        "com.github.tchx84.Flatseal"
       ];
     };
 
     xdg.portal = {
       enable = true;
       # GNOME primary portal with GTK fallback
-      extraPortals = [ pkgs.xdg-desktop-portal-gnome pkgs.xdg-desktop-portal-gtk ];
+      extraPortals = [
+        pkgs.xdg-desktop-portal-gnome
+        pkgs.xdg-desktop-portal-gtk
+      ];
     };
   };
 }

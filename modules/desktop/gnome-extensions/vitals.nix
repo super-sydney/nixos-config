@@ -1,4 +1,9 @@
-{ config, pkgs, lib, ... }:
+{
+  config,
+  pkgs,
+  lib,
+  ...
+}:
 
 {
   options.gnome.extensions.vitals.enable = lib.mkOption {
@@ -18,17 +23,22 @@
       "org/gnome/shell/extensions/vitals" = {
         alphabetize = true;
         fixed_widths = false;
-        hide-icons=false;
-        hide-zeros=false;
-        hot-sensors=["_temperature_acpi_thermal zone_" "__fan_avg__" "__network-rx_max__" "_storage_free_"];
-        icon-style=1;
-        menu-centered=true;
-        position-in-panel=1;
-        show-memory=false;
-        show-processor=true;
-        show-system=false;
-        show-voltage=false;
-        use-higher-precision=true;
+        hide-icons = false;
+        hide-zeros = false;
+        hot-sensors = [
+          "_temperature_acpi_thermal zone_"
+          "__fan_avg__"
+          "__network-rx_max__"
+          "_storage_free_"
+        ];
+        icon-style = 1;
+        menu-centered = true;
+        position-in-panel = 1;
+        show-memory = false;
+        show-processor = true;
+        show-system = false;
+        show-voltage = false;
+        use-higher-precision = true;
       };
     };
   };

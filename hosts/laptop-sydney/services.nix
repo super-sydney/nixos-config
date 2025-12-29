@@ -18,7 +18,10 @@
   # XDG portals (GNOME primary with GTK fallback)
   xdg.portal = {
     enable = true;
-    extraPortals = [ pkgs.xdg-desktop-portal-gnome pkgs.xdg-desktop-portal-gtk ];
+    extraPortals = [
+      pkgs.xdg-desktop-portal-gnome
+      pkgs.xdg-desktop-portal-gtk
+    ];
   };
 
   # GVFS for Trash, network mounts, MTP, etc.
@@ -27,7 +30,7 @@
   # Thumbnails support via Tumbler
   services.tumbler.enable = true;
 
-   # Bluetooth (BlueZ)
+  # Bluetooth (BlueZ)
   hardware.bluetooth = {
     enable = true;
     powerOnBoot = true;

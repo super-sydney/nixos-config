@@ -1,4 +1,9 @@
-{ config, pkgs, lib, ...}:
+{
+  config,
+  pkgs,
+  lib,
+  ...
+}:
 
 let
   breezexDark = pkgs.stdenv.mkDerivation {
@@ -27,7 +32,10 @@ let
       sha256 = "sfPnbjB71IsX8L9V0vWnzp9EWxJ/Qn4R95pjKnnjz08=";
     };
 
-    nativeBuildInputs = with pkgs; [ bash gtk3 ];
+    nativeBuildInputs = with pkgs; [
+      bash
+      gtk3
+    ];
 
     patchPhase = ''
       patchShebangs install.sh
@@ -66,7 +74,8 @@ let
     '';
   };
 
-in {
+in
+{
   options.gtkTheme.enable = lib.mkOption {
     type = lib.types.bool;
     default = false;

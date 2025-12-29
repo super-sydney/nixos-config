@@ -4,7 +4,12 @@
   dconf.settings = {
     "org/gnome/shell" = {
       disable-user-extensions = false;
-      favorite-apps = ["zen-beta.desktop" "org.gnome.Nautilus.desktop" "obsidian.desktop" "org.jellyfin.JellyfinDesktop.desktop"];
+      favorite-apps = [
+        "zen-beta.desktop"
+        "org.gnome.Nautilus.desktop"
+        "obsidian.desktop"
+        "org.jellyfin.JellyfinDesktop.desktop"
+      ];
     };
 
     "org/gnome/shell/keybindings" = {

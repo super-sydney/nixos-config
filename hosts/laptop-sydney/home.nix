@@ -1,11 +1,17 @@
-{ config, pkgs, inputs, ... }:
+{
+  config,
+  pkgs,
+  inputs,
+  ...
+}:
 
 let
   moduleSets = import ../../modules;
 in
 {
-  imports = builtins.attrValues moduleSets.homeManagerModules
-    ++ [ inputs.zen-browser.homeModules.beta ];
+  imports = builtins.attrValues moduleSets.homeManagerModules ++ [
+    inputs.zen-browser.homeModules.beta
+  ];
 
   # Games
   osuLazer.enable = true;
@@ -68,14 +74,18 @@ in
     enable = true;
     profiles.default = {
       isDefault = true;
-      userChrome = builtins.readFile (pkgs.fetchurl {
-        url = "https://raw.githubusercontent.com/omeyenburg/catppuccin-zen-browser/main/themes/Mocha/Mauve/userChrome.css";
-        sha256 = "1lvpxcfzg969jxn1djl8adrfnw76djhgb8pi69zvld61qxjrlgcc";
-      });
-      userContent = builtins.readFile (pkgs.fetchurl {
-        url = "https://raw.githubusercontent.com/omeyenburg/catppuccin-zen-browser/main/themes/Mocha/Mauve/userContent.css";
-        sha256 = "0jnlgkmk2mswzrwfhis9skk6a9svc995bd1a9292hy94wr2kqyi9";
-      });
+      userChrome = builtins.readFile (
+        pkgs.fetchurl {
+          url = "https://raw.githubusercontent.com/omeyenburg/catppuccin-zen-browser/main/themes/Mocha/Mauve/userChrome.css";
+          sha256 = "1lvpxcfzg969jxn1djl8adrfnw76djhgb8pi69zvld61qxjrlgcc";
+        }
+      );
+      userContent = builtins.readFile (
+        pkgs.fetchurl {
+          url = "https://raw.githubusercontent.com/omeyenburg/catppuccin-zen-browser/main/themes/Mocha/Mauve/userContent.css";
+          sha256 = "0jnlgkmk2mswzrwfhis9skk6a9svc995bd1a9292hy94wr2kqyi9";
+        }
+      );
       settings = {
         "toolkit.legacyUserProfileCustomizations.stylesheets" = true;
       };
@@ -98,7 +108,7 @@ in
       "x-scheme-handler/https" = "zen-beta.desktop";
       "x-scheme-handler/about" = "zen-beta.desktop";
       "x-scheme-handler/unknown" = "zen-beta.desktop";
-      
+
       # Video - VLC
       "video/mp4" = "vlc.desktop";
       "video/x-matroska" = "vlc.desktop";
@@ -106,7 +116,7 @@ in
       "video/mpeg" = "vlc.desktop";
       "video/x-msvideo" = "vlc.desktop";
       "video/quicktime" = "vlc.desktop";
-      
+
       # Audio - VLC
       "audio/mpeg" = "vlc.desktop";
       "audio/x-wav" = "vlc.desktop";

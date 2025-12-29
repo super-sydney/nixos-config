@@ -1,16 +1,19 @@
 { config, pkgs, ... }:
 
 {
-  imports =
-    [ ./hardware-configuration.nix
-      ./localisation.nix
-      ./network.nix
-      ./services.nix
-      ./users.nix
-    ];
+  imports = [
+    ./hardware-configuration.nix
+    ./localisation.nix
+    ./network.nix
+    ./services.nix
+    ./users.nix
+  ];
 
   # Enable flakes & nix command
-  nix.settings.experimental-features = [ "nix-command" "flakes" ];
+  nix.settings.experimental-features = [
+    "nix-command"
+    "flakes"
+  ];
 
   # Optimise store contents and enable automatic GC
   nix.settings.auto-optimise-store = true;
@@ -60,10 +63,8 @@
             enable = true;
             enableOffloadCmd = true; # provides nvidia-offload helper
           };
-          # TODO: replace these with your actual BusIDs from `lspci`
-          # e.g., "PCI:1:0:0" format
-          amdgpuBusId = "PCI:8:0:0";   # placeholder
-          nvidiaBusId = "PCI:1:0:0";   # placeholder
+          amdgpuBusId = "PCI:8:0:0";
+          nvidiaBusId = "PCI:1:0:0";
         };
       };
       # Prevent nouveau from loading when using NVIDIA proprietary driver
@@ -80,9 +81,8 @@
         powerManagement.enable = true;
         prime = {
           sync.enable = true;
-          # TODO: set BusIDs via `lspci` (same format as above)
-          amdgpuBusId = "PCI:8:0:0";   # placeholder
-          nvidiaBusId = "PCI:1:0:0";   # placeholder
+          amdgpuBusId = "PCI:8:0:0";
+          nvidiaBusId = "PCI:1:0:0";
         };
       };
       boot.blacklistedKernelModules = [ "nouveau" ];

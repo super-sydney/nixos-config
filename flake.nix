@@ -16,7 +16,14 @@
     };
   };
 
-  outputs = { self, nixpkgs, home-manager, zen-browser, ... }@inputs:
+  outputs =
+    {
+      self,
+      nixpkgs,
+      home-manager,
+      zen-browser,
+      ...
+    }@inputs:
     let
       system = "x86_64-linux";
       pkgs = import nixpkgs { inherit system; };
@@ -24,26 +31,26 @@
     in
     {
 
-    # Define multiple NixOS configurations keyed by host name.
-    nixosConfigurations = {
-      "laptop-sydney" = nixpkgs.lib.nixosSystem {
-        inherit system;
-        specialArgs = { inherit inputs; };
-        modules = [
-          { nixpkgs.config.allowUnfree = true; }
-          home-manager.nixosModules.home-manager
-        ]
-        ++ builtins.attrValues moduleSets.nixosModules
-        ++ [
-          ./hosts/laptop-sydney
-          {
-            home-manager.useGlobalPkgs = true;
-            home-manager.useUserPackages = true;
-            home-manager.extraSpecialArgs = { inherit inputs; };
-            home-manager.users.sydney = import ./hosts/laptop-sydney/home.nix;
-          }
-        ];
+      # Define multiple NixOS configurations keyed by host name.
+      nixosConfigurations = {
+        "laptop-sydney" = nixpkgs.lib.nixosSystem {
+          inherit system;
+          specialArgs = { inherit inputs; };
+          modules = [
+            { nixpkgs.config.allowUnfree = true; }
+            home-manager.nixosModules.home-manager
+          ]
+          ++ builtins.attrValues moduleSets.nixosModules
+          ++ [
+            ./hosts/laptop-sydney
+            {
+              home-manager.useGlobalPkgs = true;
+              home-manager.useUserPackages = true;
+              home-manager.extraSpecialArgs = { inherit inputs; };
+              home-manager.users.sydney = import ./hosts/laptop-sydney/home.nix;
+            }
+          ];
+        };
       };
     };
-  };
 }

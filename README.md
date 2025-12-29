@@ -1,3 +1,59 @@
+## Installation Instructions
+
+### Prerequisites
+
+- A clean installation of NixOS with root access
+- Git installed on the system
+
+### Step-by-Step Setup
+
+1. **Clone the configuration to your home directory:**
+
+```bash
+git clone https://github.com/super-sydney/nixos-config.git ~/.config/nixos
+```
+
+2. **Generate hardware configuration:**
+
+```bash
+sudo nixos-generate-config --show-hardware-config > ~/.config/nixos/hosts/laptop-sydney/hardware-configuration.nix
+```
+
+3. **Update the hostname and system name (optional):**
+
+If your system hostname differs from `laptop-sydney`, you'll need to:
+   - Rename the `hosts/laptop-sydney` directory to match your hostname
+   - Update `flake.nix` to reference your new hostname in `nixosConfigurations`
+   - Update references in `hosts/*/default.nix`
+
+4. **Review and customize the configuration:**
+
+Check the following files to match your system:
+   - `hosts/laptop-sydney/users.nix` - User accounts and settings
+   - `hosts/laptop-sydney/network.nix` - Network configuration
+   - `hosts/laptop-sydney/localisation.nix` - Time zone and locale
+   - `modules/desktop/gtk.nix`, `dconf/` - Desktop environment settings
+   - Any application modules you want to enable/disable
+
+5. **Build and activate the configuration:**
+
+```bash
+sudo nixos-rebuild switch --flake ~/.config/nixos#laptop-sydney
+```
+
+6. **Reboot to apply all changes:**
+
+```bash
+sudo reboot
+```
+
+### After Installation
+
+- Enable individual modules by setting their options to `true` in your host's configuration files
+- Rebuild with the same `nixos-rebuild` command after making changes
+- Use `sudo nixos-rebuild build --flake ~/.config/nixos` to test changes without activating them
+- Use `nix flake check ~/.config/nixos` to validate your configuration
+
 ## Project Structure
 
 ### Overview

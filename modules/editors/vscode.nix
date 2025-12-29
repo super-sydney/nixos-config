@@ -28,7 +28,7 @@
           default = {
             extensions = defaultExtensions;
             userSettings = {
-              "editor.fontFamily" = [ "FiraCode" "Droid Sans Mono" "monospace" "monospace" ];
+              "editor.fontFamily" = [ "FiraCode" "Droid Sans Mono" "monospace" ];
               "editor.fontLigatures" = true;
               "editor.fontSize" = 16;
               "editor.formatOnSave" = true;
@@ -126,5 +126,6 @@
           };
         };
     };
+    home.packages = [ pkgs.nixfmt ];
   };
 }

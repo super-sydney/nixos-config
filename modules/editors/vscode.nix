@@ -28,9 +28,56 @@
           default = {
             extensions = defaultExtensions;
             userSettings = {
+              "editor.fontFamily" = [ "FiraCode" "Droid Sans Mono" "monospace" "monospace" ];
+              "editor.fontLigatures" = true;
+              "editor.fontSize" = 16;
               "editor.formatOnSave" = true;
+              "editor.formatOnSaveMode" = "modifications";
+              "editor.formatOnPaste" = true;
+              "editor.mouseWheelZoom" = true;
+              "editor.rulers" = [
+                {
+                  column = 88;
+                  color = "#7C7C7C";
+                }
+              ];
+              "editor.wordWrap" = "bounded";
+              "editor.wordWrapColumn" = 88;
+
+              "files.autoSave" = "onFocusChange";
               "files.trimTrailingWhitespace" = true;
               "files.insertFinalNewline" = true;
+
+              "search.exclude" = {
+                "**/.venv/**" = true;
+              };
+
+              "terminal.integrated.cursorStyle" = "line";
+
+              "workbench.colorTheme" = "Catppuccin Mocha";
+              "workbench.editor.tabSizing" = "fixed";
+              "workbench.iconTheme" = "catppuccin-mocha";
+
+              "workbench.settings.applyToAllProfiles" = [
+                "editor.fontFamily"
+                "editor.fontLigatures"
+                "editor.fontSize"
+                "editor.formatOnSave"
+                "editor.formatOnSaveMode"
+                "editor.formatOnPaste"
+                "editor.mouseWheelZoom"
+                "editor.rulers"
+                "editor.wordWrap"
+                "editor.wordWrapColumn"
+                "files.autoSave"
+                "files.trimTrailingWhitespace"
+                "files.insertFinalNewline"
+                "search.exclude"
+                "terminal.integrated.cursorStyle"
+                "workbench.colorTheme"
+                "workbench.editor.tabSizing"
+                "workbench.iconTheme"
+              ];
             };
           };
 

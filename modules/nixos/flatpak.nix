@@ -11,7 +11,6 @@
     services.flatpak = {
       enable = true;
       packages = [
-          "app.zen_browser.zen"
           "com.github.tchx84.Flatseal"
       ];
     };

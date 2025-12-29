@@ -9,13 +9,17 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    nix-flatpak.url = "github:gmodena/nix-flatpak";
+    zen-browser = {
+      url = "github:0xc000022070/zen-browser-flake";
+      inputs.nixpkgs.follows = "nixpkgs";
+      inputs.home-manager.follows = "home-manager";
+    };
   };
 
-  outputs = { self, nixpkgs, home-manager, nix-flatpak, ... }@inputs:
+  outputs = { self, nixpkgs, home-manager, zen-browser, ... }@inputs:
     let
       system = "x86_64-linux";
-      pkgs = import nixpkgs {inherit system; };
+      pkgs = import nixpkgs { inherit system; };
       moduleSets = import ./modules;
     in
     {
@@ -27,7 +31,6 @@
         specialArgs = { inherit inputs; };
         modules = [
           { nixpkgs.config.allowUnfree = true; }
-          nix-flatpak.nixosModules.nix-flatpak
           home-manager.nixosModules.home-manager
         ]
         ++ builtins.attrValues moduleSets.nixosModules
@@ -36,6 +39,7 @@
           {
             home-manager.useGlobalPkgs = true;
             home-manager.useUserPackages = true;
+            home-manager.extraSpecialArgs = { inherit inputs; };
             home-manager.users.sydney = import ./hosts/laptop-sydney/home.nix;
           }
         ];

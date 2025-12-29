@@ -81,8 +81,8 @@
         prime = {
           sync.enable = true;
           # TODO: set BusIDs via `lspci` (same format as above)
-          amdgpuBusId = "PCI:0:0:0";   # placeholder
-          nvidiaBusId = "PCI:0:0:0";   # placeholder
+          amdgpuBusId = "PCI:8:0:0";   # placeholder
+          nvidiaBusId = "PCI:1:0:0";   # placeholder
         };
       };
       boot.blacklistedKernelModules = [ "nouveau" ];
@@ -91,7 +91,6 @@
 
   # NixOS Modules
   fish.enable = true;
-  flatpak.enable = true;
   steam.enable = true;
   virtualisation.enable = true;
 

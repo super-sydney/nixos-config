@@ -27,6 +27,7 @@
   # Bootloader settings
   boot.loader = {
     efi.canTouchEfiVariables = true;
+    timeout = 0;
 
     grub = {
       enable = true;
@@ -44,10 +45,18 @@
     "quiet"
     "splash"
     "loglevel=3"
-    "systemd.show_status=auto"
+"systemd.show_status=0" "rd.systemd.show_status=0"
+
     "udev.log_level=3"
     "rd.udev.log_level=3"
+"rd.loglevel=3" "rd.systemd.log_level=3" "fsck.mode=auto" "fsck.repair=no"
+
   ];
+  boot.plymouth = {
+    enable = true;
+    theme = "catppuccin-mocha";
+    themePackages = [ (pkgs.catppuccin-plymouth.override { variant = "mocha"; }) ];
+  };
 
   # Base graphics stack
   hardware.graphics = {

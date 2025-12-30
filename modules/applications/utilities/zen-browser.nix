@@ -6,14 +6,14 @@
 }:
 
 let
-  userChromeSrc = pkgs.fetchurl {
-    url = "https://raw.githubusercontent.com/omeyenburg/catppuccin-zen-browser/main/themes/Mocha/Mauve/userChrome.css";
-    sha256 = "1lvpxcfzg969jxn1djl8adrfnw76djhgb8pi69zvld61qxjrlgcc";
-  };
-  userContentSrc = pkgs.fetchurl {
-    url = "https://raw.githubusercontent.com/omeyenburg/catppuccin-zen-browser/main/themes/Mocha/Mauve/userContent.css";
-    sha256 = "0jnlgkmk2mswzrwfhis9skk6a9svc995bd1a9292hy94wr2kqyi9";
-  };
+  # userChromeSrc = pkgs.fetchurl {
+  #   url = "https://raw.githubusercontent.com/omeyenburg/catppuccin-zen-browser/main/themes/Mocha/Mauve/userChrome.css";
+  #   sha256 = "1lvpxcfzg969jxn1djl8adrfnw76djhgb8pi69zvld61qxjrlgcc";
+  # };
+  # userContentSrc = pkgs.fetchurl {
+  #   url = "https://raw.githubusercontent.com/omeyenburg/catppuccin-zen-browser/main/themes/Mocha/Mauve/userContent.css";
+  #   sha256 = "0jnlgkmk2mswzrwfhis9skk6a9svc995bd1a9292hy94wr2kqyi9";
+  # };
 in
 {
   options.zenBrowser.enable = lib.mkOption {
@@ -23,11 +23,14 @@ in
   };
 
   config = lib.mkIf config.zenBrowser.enable {
-    # Enable Zen Browser program (provided by imported HM module)
+    # Install Zen Browser as a package
     programs.zen-browser.enable = true;
 
-    # Theme CSS files for Zen profile located at ~/.zen/chrome
-    home.file.".zen/chrome/userChrome.css".source = userChromeSrc;
-    home.file.".zen/chrome/userContent.css".source = userContentSrc;
+    # Manage profiles.ini with force = true so rebuild doesn't fail when it already exists
+    # This file will be created/updated by Home Manager, allowing the browser to use it
+    home.file.".zen/profiles.ini" = {
+      force = true;
+      text = "";
+    };
   };
 }

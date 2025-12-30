@@ -7,12 +7,13 @@
     };
 
     "org/gnome/settings-daemon/plugins/media-keys" = {
+      control-center = [ "<Super>i" ];
       home = [ "<Super>f" ];
       play = [
         "Pause"
         "<Control><Delete>"
       ];
-      screensaver = [ "<Super>Escape" ];
+      screensaver = [ "<Super>l" ];
       www = [ "<Super>b" ];
       custom-keybindings = [
         "/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/terminal/"

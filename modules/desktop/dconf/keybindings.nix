@@ -8,8 +8,8 @@
 
     "org/gnome/desktop/wm/keybindings" = {
       close = [ "<Super>q" ];
-      minimize = [ "<Super>m" ];
-      maximize = [ "<Super>h" ];
+      minimize = [ "<Super>h" ];
+      maximize = [ "<Super>m" ];
       move-to-monitor-down = [ "<Super><Shift>Down" ];
       move-to-monitor-left = [ "<Super><Shift>Left" ];
       move-to-monitor-right = [ "<Super><Shift>Right" ];

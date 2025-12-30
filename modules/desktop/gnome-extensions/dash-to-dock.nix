@@ -22,9 +22,11 @@
 
       "org/gnome/shell/extensions/dash-to-dock" = {
         animation-time = 0.05;
+        apply-custom-theme = true;
         background-opacity = 0.8;
         custom-theme-shrink = false;
         dash-max-icon-size = 48;
+        disable-overview-on-startup = true;
         dock-position = "LEFT";
         height-fraction = 0.9;
         hide-delay = 0.2;

@@ -60,7 +60,7 @@
       };
 
       "org/gnome/shell/extensions/blur-my-shell/panel" = {
-        blur = true;
+        blur = false;
         brightness = 0.6;
         pipeline = "pipeline_default";
         sigma = 30;

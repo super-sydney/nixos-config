@@ -12,6 +12,10 @@
       ];
     };
 
+    "org/gnome/shell/mutter" = {
+      attach-modal-dialogs = false;
+    };
+
     "org/gnome/shell/keybindings" = {
       show-screenshot-ui = [ "<Shift><Super>s" ];
     };

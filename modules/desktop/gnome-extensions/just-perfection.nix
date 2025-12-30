@@ -41,7 +41,7 @@
         panel = true;
         panel-in-overview = true;
         power-icon = true;
-        quick-settings = false;
+        quick-settings = true;
         ripple-box = true;
         search = true;
         show-apps-button = true;

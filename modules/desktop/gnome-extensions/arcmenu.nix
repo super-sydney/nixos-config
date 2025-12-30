@@ -32,11 +32,12 @@
         hide-overview-on-arcmenu-open = true;
         hide-overview-on-startup = true;
         menu-button-appearance = "Icon";
-        menu-button-icon = "resource:///org/gnome/shell/extensions/arcmenu/icons/scalable/actions/distro-nixos-symbolic.svg";
+        menu-button-icon = "Distro_Icon";
+        distro-icon = 22;
         menu-button-left-click-action = "ArcMenu";
         menu-button-padding = -1; # default
         menu-button-position-offset = 0;
-        menu-layout = "Default";
+        menu-layout = "Runner";
         multi-monitor = true;
         override-menu-theme = false;
         position-in-panel = "Left";

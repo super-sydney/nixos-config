@@ -19,6 +19,7 @@ in
     ./dash-to-dock.nix
     ../dconf
     ./just-perfection.nix
+    ./open-bar.nix
     ./user-themes.nix
     ./vitals.nix
   ];

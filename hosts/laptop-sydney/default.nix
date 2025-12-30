@@ -123,6 +123,9 @@
   steam.enable = true;
   virtualisation.enable = true;
 
+  # Hardware
+  hardware.keyboard.qmk.enable = true; # QMK for use with via
+
   system.stateVersion = "25.05";
 
 }

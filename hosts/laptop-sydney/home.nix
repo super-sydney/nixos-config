@@ -41,6 +41,7 @@ in
   piper.enable = true;
   protonvpnGui.enable = true;
   qdirstat.enable = true;
+  qmk.enable = true;
   wine.enable = true;
 
   # Desktop

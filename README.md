@@ -53,6 +53,7 @@ sudo reboot
 - Rebuild with the same `nixos-rebuild` command after making changes
 - Use `sudo nixos-rebuild build --flake ~/.config/nixos` to test changes without activating them
 - Use `nix flake check ~/.config/nixos` to validate your configuration
+- Set a profile picture
 
 ## Project Structure
 

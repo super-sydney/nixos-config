@@ -48,7 +48,6 @@
     "udev.log_level=3"
     "rd.udev.log_level=3"
   ];
-  # boot.loader.grub.theme = "${pkgs.catppuccin-grub}/grub/themes/catppuccin-mocha-grub-theme";
 
   # Base graphics stack
   hardware.graphics = {

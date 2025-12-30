@@ -11,6 +11,5 @@
   piper = import ./piper.nix;
   protonvpnGui = import ./protonvpn-gui.nix;
   qdirstat = import ./qdirstat.nix;
-  wine = import ./wine.nix;
   zenBrowser = import ./zen-browser.nix;
 }

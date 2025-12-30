@@ -12,5 +12,6 @@
   protonvpnGui = import ./protonvpn-gui.nix;
   qdirstat = import ./qdirstat.nix;
   qmk = import ./qmk.nix;
+  solaar = import ./solaar.nix;
   zenBrowser = import ./zen-browser.nix;
 }

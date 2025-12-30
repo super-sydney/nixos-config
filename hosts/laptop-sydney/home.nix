@@ -38,10 +38,10 @@ in
   obsidian.enable = true;
   opentabletdriver.enable = true;
   pikaBackup.enable = true;
-  piper.enable = true;
   protonvpnGui.enable = true;
   qdirstat.enable = true;
   qmk.enable = true;
+  solaar.enable = true;
   wine.enable = true;
 
   # Desktop

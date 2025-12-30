@@ -25,13 +25,30 @@
   };
 
   # Bootloader settings
-  # boot.loader.grub.enable = true;
-  # boot.loader.grub.efiSupport = true;
-  # boot.loader.grub.device = "/dev/vda";
-  # boot.loader.grub.useOSProber = true;
-  
-  boot.loader.systemd-boot.enable = true;
-  boot.loader.efi.canTouchEfiVariables = true;
+  boot.loader = {
+    efi.canTouchEfiVariables = true;
+
+    grub = {
+      enable = true;
+      efiSupport = true;
+      device = "nodev"; # EFI mode
+      timeoutStyle = "hidden"; # Skip menu unless pressing shift
+      theme = pkgs.catppuccin-grub;
+    };
+  };
+
+  # Quiet boot
+  boot.consoleLogLevel = 0;
+  boot.initrd.verbose = false;
+  boot.kernelParams = [
+    "quiet"
+    "splash"
+    "loglevel=3"
+    "systemd.show_status=auto"
+    "udev.log_level=3"
+    "rd.udev.log_level=3"
+  ];
+  # boot.loader.grub.theme = "${pkgs.catppuccin-grub}/grub/themes/catppuccin-mocha-grub-theme";
 
   # Base graphics stack
   hardware.graphics = {

@@ -26,11 +26,13 @@ in
     # Install Zen Browser as a package
     programs.zen-browser.enable = true;
 
-    # Manage profiles.ini with force = true so rebuild doesn't fail when it already exists
-    # This file will be created/updated by Home Manager, allowing the browser to use it
-    home.file.".zen/profiles.ini" = {
-      force = true;
-      text = "";
-    };
+    # Create profiles.ini only if it doesn't already exist
+    # This ensures existing profiles are preserved across rebuilds
+    home.activation.zenBrowserProfilesInit = lib.hm.dag.entryAfter ["writeBoundary"] ''
+      if [ ! -f "$HOME/.zen/profiles.ini" ]; then
+        $DRY_RUN_CMD mkdir -p "$HOME/.zen"
+        $DRY_RUN_CMD echo "Please replace this to use the profile you want" > "$HOME/.zen/profiles.ini"
+      fi
+    '';
   };
 }

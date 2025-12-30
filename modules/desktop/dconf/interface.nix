@@ -7,8 +7,8 @@
 
 {
   home.packages = with pkgs; [
-    nerd-fonts.ubuntu-sans
     fira-code
+    fira-sans
   ];
 
   dconf.settings = {
@@ -18,11 +18,11 @@
       clock-show-seconds = true;
       clock-show-weekday = true;
       color-scheme = "prefer-dark";
-      document-font-name = "UbuntuSans Nerd Font 11";
+      document-font-name = "Fira Sans 12";
       enable-animations = true;
       font-antialiasing = "grayscale";
       font-hinting = "full";
-      font-name = "UbuntuSans Nerd Font 12";
+      font-name = "Fira Sans 12";
       gtk-enable-primary-paste = false;
       monospace-font-name = "FiraCode Nerd Font Mono 11";
       show_battery_percentage = true;

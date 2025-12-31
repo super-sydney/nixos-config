@@ -14,9 +14,12 @@ hardware.sensor.iio.enable = true;
     variant = "";
   };
 
-  # Power profiles daemon
-  services.power-profiles-daemon.enable = true;
+  # Power management
+  services.power-profiles-daemon.enable = false;
   services.upower.enable = true;
+  services.thermald.enable = true;
+  services.auto-cpufreq.enable = true;
+  powerManagement.powertop.enable = true;
 
   # XDG portals (GNOME primary with GTK fallback)
   xdg.portal = {

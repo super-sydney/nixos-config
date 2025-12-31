@@ -24,6 +24,7 @@
     };
 
     "org/gnome/settings-daemon/plugins/power" = {
+      power-button-action = "interactive";
       idle-dim = true;
       sleep-inactive-ac-timeout = 1800;
       sleep-inactive-ac-type = "suspend";

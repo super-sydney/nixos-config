@@ -20,6 +20,7 @@
       color-scheme = "prefer-dark";
       document-font-name = "Fira Sans 12";
       enable-animations = true;
+      enable-hot-corners = false;
       font-antialiasing = "grayscale";
       font-hinting = "full";
       font-name = "Fira Sans 12";

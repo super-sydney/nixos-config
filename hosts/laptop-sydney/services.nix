@@ -6,8 +6,8 @@
   services.displayManager.gdm.enable = true;
   services.desktopManager.gnome.enable = true;
 
-# Auto-rotation
-hardware.sensor.iio.enable = true;
+  # Auto-rotation
+  hardware.sensor.iio.enable = true;
 
   services.xserver.xkb = {
     layout = "us";
@@ -19,7 +19,6 @@ hardware.sensor.iio.enable = true;
   services.upower.enable = true;
   services.thermald.enable = true;
   services.auto-cpufreq.enable = true;
-  powerManagement.powertop.enable = true;
 
   # XDG portals (GNOME primary with GTK fallback)
   xdg.portal = {

@@ -6,6 +6,9 @@
   services.displayManager.gdm.enable = true;
   services.desktopManager.gnome.enable = true;
 
+# Auto-rotation
+hardware.sensor.iio.enable = true;
+
   services.xserver.xkb = {
     layout = "us";
     variant = "";

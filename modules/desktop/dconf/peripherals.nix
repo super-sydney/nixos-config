@@ -14,5 +14,9 @@
     "org/gnome/settings-daemon/peripherals/touchscreen" = {
       orientation-lock = false;
     };
+
+    "org/gnome/shell" = {
+      orientation-lock = false;
+    };
   };
 }

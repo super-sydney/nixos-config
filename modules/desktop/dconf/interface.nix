@@ -25,7 +25,7 @@
       font-name = "Fira Sans 12";
       gtk-enable-primary-paste = false;
       monospace-font-name = "FiraCode Nerd Font Mono 11";
-      show_battery_percentage = true;
+      show-battery-percentage = true;
     };
   };
 }

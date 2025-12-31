@@ -69,6 +69,7 @@ in
   gnome.extensions.just-perfection.enable = true;
   gnome.extensions.vitals.enable = true;
   gnome.extensions.user-themes.enable = true;
+  gnome.extensions.screen-rotate.enable = true;
 
   # Utilities
   zenBrowser.enable = true;

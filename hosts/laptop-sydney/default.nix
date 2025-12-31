@@ -27,7 +27,7 @@
   # Bootloader settings
   boot.loader = {
     efi.canTouchEfiVariables = true;
-    timeout = 0;
+    timeout = 1;
 
     grub = {
       enable = true;
@@ -39,7 +39,7 @@
   };
 
   # Quiet boot
-  boot.consoleLogLevel = 0;
+  boot.consoleLogLevel = 3;
   boot.initrd.verbose = false;
   boot.kernelParams = [
     "quiet"

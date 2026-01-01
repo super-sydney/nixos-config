@@ -13,6 +13,6 @@
   };
 
   config = lib.mkIf config.mattermost.enable {
-    home.packages = with pkgs; [ mattermost ];
+    home.packages = with pkgs; [ mattermost-desktop ];
   };
 }

@@ -1,4 +1,4 @@
-{ config, pkgs, ... }:
+{ config, pkgs, lib, ... }:
 
 {
   imports = [
@@ -47,23 +47,31 @@
     themePackages = [ (pkgs.catppuccin-plymouth.override { variant = "mocha"; }) ];
   };
 
-  # Base graphics stack
+  # NixOS Modules
+  fish.enable = true;
+  nvtop.enable = true;
+  steam.enable = true;
+  virtualisation.enable = true;
+
+  # Hardware
+  hardware.keyboard.qmk.enable = true; # QMK for use with via
+
+  # Default specialisation (igpu)
   hardware.graphics = {
     enable = true;
     enable32Bit = true;
   };
 
-  # Default: iGPU-only for maximum battery life
-  environment.etc."nixos-specialisation".text = "igpu\n";
-  services.xserver.videoDrivers = [ "amdgpu" ];
-  boot.blacklistedKernelModules = [
+  services.xserver.videoDrivers = lib.mkDefault [ "amdgpu" ];
+  boot.blacklistedKernelModules = lib.mkDefault [
     "nouveau"
     "nvidia"
     "nvidia_drm"
     "nvidia_modeset"
     "nvidia_uvm"
   ];
-  boot.kernelParams = [
+
+  boot.kernelParams = lib.mkDefault [
     "quiet"
     "splash"
     "loglevel=3"
@@ -81,33 +89,23 @@
     "module_blacklist=nouveau,nvidia,nvidia_drm,nvidia_modeset,nvidia_uvm"
   ];
 
-  # GPU specialisations
   specialisation = {
-    # Hybrid: PRIME offload (render on NVIDIA, display via AMD)
     hybrid.configuration = {
-      environment.etc."nixos-specialisation".text = "hybrid\n";
+      hardware.graphics.enable = true;
       services.xserver.videoDrivers = [ "nvidia" ];
+      hardware.amdgpu.initrd.enable = true;
       hardware.nvidia = {
-        package = config.boot.kernelPackages.nvidiaPackages.production;
-        open = true; # GTX 1650 Max-Q (Turing) → use open kernel modules
+        open = true;
         modesetting.enable = true;
-        nvidiaSettings = true;
-        forceFullCompositionPipeline = true;
         powerManagement.enable = true;
-        powerManagement.finegrained = true;
-        dynamicBoost.enable = true;
         prime = {
-          offload = {
-            enable = true;
-            enableOffloadCmd = true; # provides nvidia-offload helper
-          };
-          amdgpuBusId = "PCI:8:0:0";
+          offload.enable = true;
+          offload.enableOffloadCmd = true;
           nvidiaBusId = "PCI:1:0:0";
+          amdgpuBusId = "PCI:8:0:0";
         };
       };
-      # Prevent nouveau from loading when using NVIDIA proprietary driver
-      boot.blacklistedKernelModules = [ "nouveau" ];
-      # Override kernelParams to remove module_blacklist
+
       boot.kernelParams = [
         "quiet"
         "splash"
@@ -125,30 +123,21 @@
       ];
     };
 
-    # NVIDIA-only: make dGPU primary via PRIME sync
     nvidia.configuration = {
-      environment.etc."nixos-specialisation".text = "nvidia\n";
+      hardware.graphics.enable = true;
       services.xserver.videoDrivers = [ "nvidia" ];
+      hardware.amdgpu.initrd.enable = true;
       hardware.nvidia = {
-        package = config.boot.kernelPackages.nvidiaPackages.production;
-        open = true; # GTX 1650 Max-Q (Turing) → use open kernel modules
+        open = true;
         modesetting.enable = true;
-        nvidiaSettings = true;
-        forceFullCompositionPipeline = true;
         powerManagement.enable = true;
-        powerManagement.finegrained = true;
-        dynamicBoost.enable = true;
         prime = {
-          offload = {
-            enable = true;
-            enableOffloadCmd = true; # provides nvidia-offload helper
-          };
-          amdgpuBusId = "PCI:8:0:0";
+          sync.enable = true;
           nvidiaBusId = "PCI:1:0:0";
+          amdgpuBusId = "PCI:8:0:0";
         };
       };
-      boot.blacklistedKernelModules = [ "nouveau" ];
-      # Override kernelParams to remove module_blacklist
+
       boot.kernelParams = [
         "quiet"
         "splash"
@@ -166,15 +155,6 @@
       ];
     };
   };
-
-  # NixOS Modules
-  fish.enable = true;
-  nvtop.enable = true;
-  steam.enable = true;
-  virtualisation.enable = true;
-
-  # Hardware
-  hardware.keyboard.qmk.enable = true; # QMK for use with via
 
   system.stateVersion = "25.05";
 

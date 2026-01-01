@@ -9,91 +9,102 @@
     ./users.nix
   ];
 
-  # Enable flakes & nix command
-  nix.settings.experimental-features = [
-    "nix-command"
-    "flakes"
-  ];
+  # Nix settings
+  nix.settings = {
+    experimental-features = [ "nix-command" "flakes" ];
+    auto-optimise-store = true;
+  };
 
-  # Optimise store contents and enable automatic GC
-  nix.settings.auto-optimise-store = true;
   nix.optimise.automatic = true;
   nix.gc = {
     automatic = true;
-    dates = "weekly"; # run gc weekly
-    options = "--delete-older-than 7d"; # keep last 7 days of generations
+    dates = "weekly";
+    options = "--delete-older-than 7d";
   };
 
-  # Bootloader settings
-  boot.loader = {
-    efi.canTouchEfiVariables = true;
-    timeout = 1;
-
-    grub = {
-      enable = true;
-      efiSupport = true;
-      device = "nodev"; # EFI mode
-      timeoutStyle = "hidden"; # Skip menu unless pressing shift
-      theme = pkgs.catppuccin-grub;
+  # Boot configuration
+  boot = {
+    # Bootloader
+    loader = {
+      efi.canTouchEfiVariables = true;
+      timeout = 1;
+      grub = {
+        enable = true;
+        efiSupport = true;
+        device = "nodev";
+        timeoutStyle = "hidden";
+        theme = pkgs.catppuccin-grub;
+      };
     };
+
+    # Quiet boot
+    consoleLogLevel = 3;
+    initrd.verbose = false;
+    plymouth = {
+      enable = true;
+      theme = "catppuccin-mocha";
+      themePackages = [ (pkgs.catppuccin-plymouth.override { variant = "mocha"; }) ];
+    };
+
+    # Default kernel parameters (igpu mode)
+    kernelParams = lib.mkDefault [
+      # Quiet boot
+      "quiet"
+      "splash"
+      "loglevel=3"
+      "systemd.show_status=0"
+      "rd.systemd.show_status=0"
+      "udev.log_level=3"
+      "rd.udev.log_level=3"
+      "rd.loglevel=3"
+      "rd.systemd.log_level=3"
+      # Filesystem checks
+      "fsck.mode=auto"
+      "fsck.repair=no"
+      # Power management
+      "mem_sleep_default=deep"
+      "pcie_aspm.policy=powersupersave"
+      # Disable NVIDIA dGPU
+      "module_blacklist=nouveau,nvidia,nvidia_drm,nvidia_modeset,nvidia_uvm"
+    ];
+
+    # Blacklist NVIDIA modules by default
+    blacklistedKernelModules = lib.mkDefault [
+      "nouveau"
+      "nvidia"
+      "nvidia_drm"
+      "nvidia_modeset"
+      "nvidia_uvm"
+    ];
   };
 
-  # Quiet boot
-  boot.consoleLogLevel = 3;
-  boot.initrd.verbose = false;
-  boot.plymouth = {
-    enable = true;
-    theme = "catppuccin-mocha";
-    themePackages = [ (pkgs.catppuccin-plymouth.override { variant = "mocha"; }) ];
+  # Hardware configuration
+  hardware = {
+
+    # Graphics (default: igpu)
+    graphics = {
+      enable = true;
+      enable32Bit = true;
+    };
+    amdgpu.initrd.enable = true;
   };
 
-  # NixOS Modules
+  # Default to AMD GPU driver
+  services.xserver.videoDrivers = lib.mkDefault [ "amdgpu" ];
+
+  # System modules (from /modules/nixos)
+  hardware.keyboard.qmk.enable = true;
   fish.enable = true;
   nvtop.enable = true;
   steam.enable = true;
   virtualisation.enable = true;
 
-  # Hardware
-  hardware.keyboard.qmk.enable = true; # QMK for use with via
-
-  # Default specialisation (igpu)
-  hardware.graphics = {
-    enable = true;
-    enable32Bit = true;
-  };
-
-  services.xserver.videoDrivers = lib.mkDefault [ "amdgpu" ];
-  boot.blacklistedKernelModules = lib.mkDefault [
-    "nouveau"
-    "nvidia"
-    "nvidia_drm"
-    "nvidia_modeset"
-    "nvidia_uvm"
-  ];
-
-  boot.kernelParams = lib.mkDefault [
-    "quiet"
-    "splash"
-    "loglevel=3"
-    "systemd.show_status=0"
-    "rd.systemd.show_status=0"
-    "udev.log_level=3"
-    "rd.udev.log_level=3"
-    "rd.loglevel=3"
-    "rd.systemd.log_level=3"
-    "fsck.mode=auto"
-    "fsck.repair=no"
-    "mem_sleep_default=deep"
-    "pcie_aspm.policy=powersupersave"
-    # Disable NVIDIA dGPU completely
-    "module_blacklist=nouveau,nvidia,nvidia_drm,nvidia_modeset,nvidia_uvm"
-  ];
-
+  # GPU specialisations
   specialisation = {
+    # Hybrid mode: igpu + dgpu on demand (nvidia-offload)
     hybrid.configuration = {
-      hardware.graphics.enable = true;
       services.xserver.videoDrivers = [ "nvidia" ];
-      hardware.amdgpu.initrd.enable = true;
+
       hardware.nvidia = {
         open = true;
         modesetting.enable = true;
@@ -106,7 +117,9 @@
         };
       };
 
-      boot.kernelParams = [
+      # Remove NVIDIA module blacklist
+      boot.blacklistedKernelModules = lib.mkForce [];
+      boot.kernelParams = lib.mkForce [
         "quiet"
         "splash"
         "loglevel=3"
@@ -123,10 +136,10 @@
       ];
     };
 
+    # NVIDIA sync mode: Always use NVIDIA GPU
     nvidia.configuration = {
-      hardware.graphics.enable = true;
       services.xserver.videoDrivers = [ "nvidia" ];
-      hardware.amdgpu.initrd.enable = true;
+
       hardware.nvidia = {
         open = true;
         modesetting.enable = true;
@@ -138,7 +151,9 @@
         };
       };
 
-      boot.kernelParams = [
+      # Remove NVIDIA module blacklist
+      boot.blacklistedKernelModules = lib.mkForce [];
+      boot.kernelParams = lib.mkForce [
         "quiet"
         "splash"
         "loglevel=3"
@@ -154,8 +169,6 @@
         "pcie_aspm.policy=powersupersave"
       ];
     };
-  };
-
-  system.stateVersion = "25.05";
+  };  system.stateVersion = "25.05";
 
 }

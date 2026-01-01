@@ -41,17 +41,6 @@
   # Quiet boot
   boot.consoleLogLevel = 3;
   boot.initrd.verbose = false;
-  boot.kernelParams = [
-    "quiet"
-    "splash"
-    "loglevel=3"
-"systemd.show_status=0" "rd.systemd.show_status=0"
-
-    "udev.log_level=3"
-    "rd.udev.log_level=3"
-"rd.loglevel=3" "rd.systemd.log_level=3" "fsck.mode=auto" "fsck.repair=no"
-
-  ];
   boot.plymouth = {
     enable = true;
     theme = "catppuccin-mocha";
@@ -64,29 +53,49 @@
     enable32Bit = true;
   };
 
+  # Default: iGPU-only for maximum battery life
+  environment.etc."nixos-specialisation".text = "igpu\n";
+  services.xserver.videoDrivers = [ "amdgpu" ];
+  boot.blacklistedKernelModules = [
+    "nouveau"
+    "nvidia"
+    "nvidia_drm"
+    "nvidia_modeset"
+    "nvidia_uvm"
+  ];
+  boot.kernelParams = [
+    "quiet"
+    "splash"
+    "loglevel=3"
+    "systemd.show_status=0"
+    "rd.systemd.show_status=0"
+    "udev.log_level=3"
+    "rd.udev.log_level=3"
+    "rd.loglevel=3"
+    "rd.systemd.log_level=3"
+    "fsck.mode=auto"
+    "fsck.repair=no"
+    "mem_sleep_default=deep"
+    "pcie_aspm.policy=powersupersave"
+    # Disable NVIDIA dGPU completely
+    "module_blacklist=nouveau,nvidia,nvidia_drm,nvidia_modeset,nvidia_uvm"
+  ];
+
   # GPU specialisations
   specialisation = {
-    # Default: iGPU-only for maximum battery life
-    igpu.configuration = {
-      # Use AMD iGPU driver, block NVIDIA modules
-      services.xserver.videoDrivers = [ "amdgpu" ];
-      boot.blacklistedKernelModules = [
-        "nouveau"
-        "nvidia"
-        "nvidia_drm"
-        "nvidia_modeset"
-        "nvidia_uvm"
-      ];
-    };
-
     # Hybrid: PRIME offload (render on NVIDIA, display via AMD)
     hybrid.configuration = {
+      environment.etc."nixos-specialisation".text = "hybrid\n";
       services.xserver.videoDrivers = [ "nvidia" ];
       hardware.nvidia = {
         package = config.boot.kernelPackages.nvidiaPackages.production;
         open = true; # GTX 1650 Max-Q (Turing) → use open kernel modules
         modesetting.enable = true;
+        nvidiaSettings = true;
+        forceFullCompositionPipeline = true;
         powerManagement.enable = true;
+        powerManagement.finegrained = true;
+        dynamicBoost.enable = true;
         prime = {
           offload = {
             enable = true;
@@ -98,28 +107,69 @@
       };
       # Prevent nouveau from loading when using NVIDIA proprietary driver
       boot.blacklistedKernelModules = [ "nouveau" ];
+      # Override kernelParams to remove module_blacklist
+      boot.kernelParams = [
+        "quiet"
+        "splash"
+        "loglevel=3"
+        "systemd.show_status=0"
+        "rd.systemd.show_status=0"
+        "udev.log_level=3"
+        "rd.udev.log_level=3"
+        "rd.loglevel=3"
+        "rd.systemd.log_level=3"
+        "fsck.mode=auto"
+        "fsck.repair=no"
+        "mem_sleep_default=deep"
+        "pcie_aspm.policy=powersupersave"
+      ];
     };
 
     # NVIDIA-only: make dGPU primary via PRIME sync
     nvidia.configuration = {
+      environment.etc."nixos-specialisation".text = "nvidia\n";
       services.xserver.videoDrivers = [ "nvidia" ];
       hardware.nvidia = {
         package = config.boot.kernelPackages.nvidiaPackages.production;
-        open = true; # Use open kernel modules on 560+ drivers
+        open = true; # GTX 1650 Max-Q (Turing) → use open kernel modules
         modesetting.enable = true;
+        nvidiaSettings = true;
+        forceFullCompositionPipeline = true;
         powerManagement.enable = true;
+        powerManagement.finegrained = true;
+        dynamicBoost.enable = true;
         prime = {
-          sync.enable = true;
+          offload = {
+            enable = true;
+            enableOffloadCmd = true; # provides nvidia-offload helper
+          };
           amdgpuBusId = "PCI:8:0:0";
           nvidiaBusId = "PCI:1:0:0";
         };
       };
       boot.blacklistedKernelModules = [ "nouveau" ];
+      # Override kernelParams to remove module_blacklist
+      boot.kernelParams = [
+        "quiet"
+        "splash"
+        "loglevel=3"
+        "systemd.show_status=0"
+        "rd.systemd.show_status=0"
+        "udev.log_level=3"
+        "rd.udev.log_level=3"
+        "rd.loglevel=3"
+        "rd.systemd.log_level=3"
+        "fsck.mode=auto"
+        "fsck.repair=no"
+        "mem_sleep_default=deep"
+        "pcie_aspm.policy=powersupersave"
+      ];
     };
   };
 
   # NixOS Modules
   fish.enable = true;
+  nvtop.enable = true;
   steam.enable = true;
   virtualisation.enable = true;
 

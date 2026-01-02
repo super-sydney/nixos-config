@@ -27,7 +27,7 @@
         gap-inner = 2;
         tile-by-default = true;
         active-hint = false;
-        hint-color-rgba = [ "1.0" "0.0" "0.0" "1.0" ];
+        hint-color-rgba = "rgba(203, 166, 247, 1)";
 
         focus-left = [];
         focus-down = [];

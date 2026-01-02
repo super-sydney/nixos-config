@@ -18,13 +18,54 @@
       "org/gnome/shell" = {
         enabled-extensions = [ "pop-shell@system76.com" ];
       };
-      # "org/gnome/shell/extensions/pop-shell" = {
-      #   icon-brightness = 0.0;
-      #   icon-contrast = 0.0;
-      #   icon-opacity = 240;
-      #   icon-saturation = 0.0;
-      #   icon-size = 0;
-      # };
+      "org/gnome/shell/extensions/pop-shell" = {
+        show-title = true;
+        smart-gaps = true;
+        fullscreen-launcher = true;
+        stacking-with-mouse = false;
+        gap-outer = 1;
+        gap-inner = 2;
+        tile-by-default = true;
+        active-hint = false;
+        hint-color-rgba = [ "1.0" "0.0" "0.0" "1.0" ];
+
+        focus-left = [];
+        focus-down = [];
+        focus-up = [];
+        focus-right = [];
+        activate-launcher = [];
+        toggle-stacking = [];
+        toggle-stacking-global = [];
+        management-orientation = [];
+        tile-enter = [];
+        tile-accept = [];
+        tile-reject = [];
+        toggle-floating = [];
+        toggle-tiling = [];
+        tile-move-left = [];
+        tile-move-down = [];
+        tile-move-up = [];
+        tile-move-right = [];
+        tile-move-left-global = [];
+        tile-move-down-global = [];
+        tile-move-up-global = [];
+        tile-move-right-global = [];
+        tile-orientation = [];
+        tile-resize-left = [];
+        tile-resize-down = [];
+        tile-resize-up = [];
+        tile-resize-right = [];
+        tile-swap-left = [];
+        tile-swap-down = [];
+        tile-swap-up = [];
+        tile-swap-right = [];
+        pop-workspace-down = [];
+        pop-workspace-up = [];
+        pop-monitor-down = [ ]; # Up/down doesn't work correctly, so use left/right instead
+        pop-monitor-up = [ ];
+        pop-monitor-left = [ "<Super><Shift>Up" ];
+        pop-monitor-right = [ "<Super><Shift>Down" ];
+      };
     };
   };
 }

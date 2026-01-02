@@ -10,10 +10,16 @@
       close = [ "<Super>q" ];
       minimize = [ "<Super>h" ];
       maximize = [ "<Super>m" ];
-      move-to-monitor-down = [ "<Super><Shift>Down" ];
-      move-to-monitor-left = [ "<Super><Shift>Left" ];
-      move-to-monitor-right = [ "<Super><Shift>Right" ];
-      move-to-monitor-up = [ "<Super><Shift>Up" ];
+      # move-to-monitor-down = [ "<Super><Shift>Down" ];
+      # move-to-monitor-left = [ "<Super><Shift>Left" ];
+      # move-to-monitor-right = [ "<Super><Shift>Right" ];
+      # move-to-monitor-up = [ "<Super><Shift>Up" ];
+
+      # Use pop-shell keybinds for monitor movement
+      move-to-monitor-down = [ ];
+      move-to-monitor-left = [ ];
+      move-to-monitor-right = [ ];
+      move-to-monitor-up = [ ];
 
       move-to-workspace-down = [ "<Super><Control><Shift>Down" ];
       move-to-workspace-left = [ "<Super><Control><Shift>Left" ];

@@ -34,11 +34,11 @@
           default = {
             extensions = defaultExtensions;
             userSettings = {
-              "editor.fontFamily" = [
-                "FiraCode"
-                "Droid Sans Mono"
-                "monospace"
-              ];
+              "window.promptToSaveChanges" = "never";
+              "files.watcherExclude" = {
+                "**/settings.json" = true;
+              };
+              "editor.fontFamily" = "'Fira Code', 'Droid Sans Mono', 'monospace'";
               "editor.fontLigatures" = true;
               "editor.fontSize" = 16;
               "editor.formatOnSave" = true;
@@ -82,6 +82,8 @@
                 "files.autoSave"
                 "files.trimTrailingWhitespace"
                 "files.insertFinalNewline"
+"files.watcherExclude"
+
                 "search.exclude"
                 "terminal.integrated.cursorStyle"
                 "workbench.colorTheme"

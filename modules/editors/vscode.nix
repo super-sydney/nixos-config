@@ -42,7 +42,7 @@
               "editor.fontLigatures" = true;
               "editor.fontSize" = 16;
               "editor.formatOnSave" = true;
-              "editor.formatOnSaveMode" = "modifications";
+              "editor.formatOnSaveMode" = "file";
               "editor.formatOnPaste" = true;
               "editor.mouseWheelZoom" = true;
               "editor.rulers" = [
@@ -82,8 +82,7 @@
                 "files.autoSave"
                 "files.trimTrailingWhitespace"
                 "files.insertFinalNewline"
-"files.watcherExclude"
-
+                "files.watcherExclude"
                 "search.exclude"
                 "terminal.integrated.cursorStyle"
                 "workbench.colorTheme"
@@ -142,10 +141,6 @@
                 arrterian.nix-env-selector
               ]);
             userSettings = {
-              "editor.defaultFormatter" = "jnoortheen.nix-ide";
-              "editor.formatOnSave" = true;
-
-              "nix.formatterPath" = "nixfmt";
             };
           };
         };

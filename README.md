@@ -70,11 +70,10 @@ This file is the main entrypoint. It defines:
 1. **Inputs** - External dependencies:
    - `nixpkgs` - The main package repository
    - `home-manager` - Tool for managing user-level configuration
-   - `nix-flatpak` - Support for Flatpak applications
+  - `zen-browser` - Zen browser flake (follows `nixpkgs` and `home-manager`)
 
 2. **Outputs** - What gets built when you rebuild:
-   - `nixosConfigurations` - System-wide settings (NixOS)
-   - `homeManagerUsers` - User-level settings (home-manager)
+  - `nixosConfigurations` - System-wide settings (NixOS)
 
 The flake connects everything together and tells Nix which modules to load for each host.
 
@@ -95,7 +94,7 @@ hosts/laptop-sydney/
 
 #### `modules/` - Reusable Configuration Modules
 
-Modules that can be enabled/disabled. They're organized by category, and each directory has a `default.nix` that exports its modules (using `//` to merge submodules). The root `modules/default.nix` combines everything into `nixosModules` (system-level) and `homeManagerModules` (user-level) sets that `flake.nix` imports:
+Modules that can be enabled/disabled. They're organized by category, and each directory has a `default.nix` that exports its modules (using `//` to merge submodules). The root `modules/default.nix` combines everything into `nixosModules` (system-level) and `homeManagerModules` (user-level) sets; the flake currently consumes the `nixosModules` set:
 
 ```
 modules/
@@ -189,8 +188,7 @@ The `#laptop-sydney` tells Nix which host config to use from `flake.nix`'s `nixo
 
 ## Themes
 
-- GTK and GNOME Shell: https://github.com/catppuccin/gtk
-  - GNOME Shell themes can be applied using the user-themes extension
-  - GTK themes can be installed using dconf/gsettings, but it's more consistent to replace the default themes by taking the `gtk-3.0` and `gtk-4.0` directories from the theme and replacing the corresponding `~/.config/gtk-*` directories.
-- Icons: https://github.com/vinceliuice/Tela-icon-theme
-- Cursor: https://github.com/ful1e5/BreezeX_Cursor
+- GTK & GNOME Shell: Catppuccin Mauve Dark (Korpsvart) — https://github.com/Fausto-Korpsvart/Catppuccin-GTK-Theme
+  - Installed via module `modules/desktop/gtk.nix` (gtkTheme option); includes shell/GTK assets and stage-placed `gtk-3.0`/`gtk-4.0` configs.
+- Icons: Tela purple dark — https://github.com/vinceliuice/Tela-icon-theme
+- Cursor: BreezeX Dark — https://github.com/ful1e5/BreezeX_Cursor

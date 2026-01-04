@@ -38,22 +38,46 @@
         wmaxbar = false;
 
         # Bar Foreground
-        fgcolor = [ "0.804" "0.839" "0.957" ];
-        dark-fgcolor = [ "0.804" "0.839" "0.957" ];
+        fgcolor = [
+          "0.804"
+          "0.839"
+          "0.957"
+        ];
+        dark-fgcolor = [
+          "0.804"
+          "0.839"
+          "0.957"
+        ];
         fgalpha = 1.0;
 
         # Bar Background
         boxalpha = 0.0;
         bgalpha = 0.0;
         isalpha = 1.0;
-        iscolor = [ "0.118" "0.118" "0.180" ];
-        dark-iscolor = [ "0.118" "0.118" "0.180" ];
+        iscolor = [
+          "0.118"
+          "0.118"
+          "0.180"
+        ];
+        dark-iscolor = [
+          "0.118"
+          "0.118"
+          "0.180"
+        ];
         shadow = false;
 
         # Bar Highlights
         autohg-bar = false;
-        hcolor = [ "0.192" "0.196" "0.267" ];
-        dark-hcolor = [ "0.192" "0.196" "0.267" ];
+        hcolor = [
+          "0.192"
+          "0.196"
+          "0.267"
+        ];
+        dark-hcolor = [
+          "0.192"
+          "0.196"
+          "0.267"
+        ];
         halpha = 1.0;
         heffect = false;
         hpad = 1.0;
@@ -61,30 +85,78 @@
 
         # Bar Border
         bwidth = 0.0;
-        bcolor = [ "0.796" "0.651" "0.969" ];
-        dark-bcolor = [ "0.796" "0.651" "0.969" ];
+        bcolor = [
+          "0.796"
+          "0.651"
+          "0.969"
+        ];
+        dark-bcolor = [
+          "0.796"
+          "0.651"
+          "0.969"
+        ];
 
         # Popup Menus
         menustyle = false;
 
-        mfgcolor = [ "0.804" "0.839" "0.957" ];
-        dark-mfgcolor = [ "0.804" "0.839" "0.957" ];
+        mfgcolor = [
+          "0.804"
+          "0.839"
+          "0.957"
+        ];
+        dark-mfgcolor = [
+          "0.804"
+          "0.839"
+          "0.957"
+        ];
         mfgalpha = 1.0;
 
-        mbgcolor = [ "0.118" "0.118" "0.180" ];
-        dark-mbgcolor = [ "0.118" "0.118" "0.180" ];
+        mbgcolor = [
+          "0.118"
+          "0.118"
+          "0.180"
+        ];
+        dark-mbgcolor = [
+          "0.118"
+          "0.118"
+          "0.180"
+        ];
         mbgalpha = 1.0;
 
-        mhcolor = [ "1" "1" "1" ];
-        dark-mhcolor = [ "1" "1" "1" ];
+        mhcolor = [
+          "1"
+          "1"
+          "1"
+        ];
+        dark-mhcolor = [
+          "1"
+          "1"
+          "1"
+        ];
         mhalpha = 0.2;
 
         smbgoverride = true;
-        smbgcolor = [ "0.192" "0.196" "0.267" ];
-        dark-smbgcolor = [ "0.192" "0.196" "0.267" ];
+        smbgcolor = [
+          "0.192"
+          "0.196"
+          "0.267"
+        ];
+        dark-smbgcolor = [
+          "0.192"
+          "0.196"
+          "0.267"
+        ];
 
-        mscolor = [ "0.796" "0.651" "0.969" ];
-        dark-mscolor = [ "0.796" "0.651" "0.969" ];
+        mscolor = [
+          "0.796"
+          "0.651"
+          "0.969"
+        ];
+        dark-mscolor = [
+          "0.796"
+          "0.651"
+          "0.969"
+        ];
         msalpha = 1.0;
 
         menu-radius = 30.0;

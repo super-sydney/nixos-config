@@ -1,4 +1,9 @@
-{ config, pkgs, lib, ... }:
+{
+  config,
+  pkgs,
+  lib,
+  ...
+}:
 
 with lib;
 
@@ -12,7 +17,8 @@ in
 
   config = mkIf cfg.enable {
     environment.systemPackages = with pkgs; [
-nvtopPackages.nvidia nvtopPackages.amd
+      nvtopPackages.nvidia
+      nvtopPackages.amd
 
     ];
   };

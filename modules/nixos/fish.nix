@@ -1,4 +1,9 @@
-{ lib, config, ... }:
+{
+  config,
+  pkgs,
+  lib,
+  ...
+}:
 
 {
   options.fish.enable = lib.mkOption {

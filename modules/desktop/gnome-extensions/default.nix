@@ -20,8 +20,7 @@ in
     ../dconf
     ./just-perfection.nix
     ./open-bar.nix
-./pop-shell.nix
-
+    ./pop-shell.nix
     ./screen-rotate.nix
     ./user-themes.nix
     ./vitals.nix

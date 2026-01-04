@@ -1,4 +1,9 @@
-{ config, pkgs, lib, ... }:
+{
+  config,
+  pkgs,
+  lib,
+  ...
+}:
 
 {
   imports = [
@@ -11,7 +16,10 @@
 
   # Nix settings
   nix.settings = {
-    experimental-features = [ "nix-command" "flakes" ];
+    experimental-features = [
+      "nix-command"
+      "flakes"
+    ];
     auto-optimise-store = true;
   };
 
@@ -118,7 +126,7 @@
       };
 
       # Remove NVIDIA module blacklist
-      boot.blacklistedKernelModules = lib.mkForce [];
+      boot.blacklistedKernelModules = lib.mkForce [ ];
       boot.kernelParams = lib.mkForce [
         "quiet"
         "splash"
@@ -152,7 +160,7 @@
       };
 
       # Remove NVIDIA module blacklist
-      boot.blacklistedKernelModules = lib.mkForce [];
+      boot.blacklistedKernelModules = lib.mkForce [ ];
       boot.kernelParams = lib.mkForce [
         "quiet"
         "splash"
@@ -169,6 +177,7 @@
         "pcie_aspm.policy=powersupersave"
       ];
     };
-  };  system.stateVersion = "25.05";
+  };
+  system.stateVersion = "25.05";
 
 }

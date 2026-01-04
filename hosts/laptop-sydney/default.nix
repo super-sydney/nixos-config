@@ -97,6 +97,7 @@
   nvtop.enable = true;
   steam.enable = true;
   virtualisation.enable = true;
+  nautilusOpenAnyTerminal.enable = true;
 
   # GPU specialisations
   specialisation = {

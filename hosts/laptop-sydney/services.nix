@@ -43,7 +43,7 @@
   # Bluetooth (BlueZ)
   hardware.bluetooth = {
     enable = true;
-    powerOnBoot = true;
+    powerOnBoot = false;
   };
 
   # Printing

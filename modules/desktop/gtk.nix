@@ -50,27 +50,40 @@ let
     dontFixup = true;
   };
 
-  catppuccinMochaMauve = pkgs.stdenv.mkDerivation {
-    pname = "catppuccin-mocha-mauve";
-    version = "1.0.3";
+  catppuccinKorpsvart = pkgs.stdenv.mkDerivation {
+    pname = "catppuccin-gtk-theme-korpsvart";
+    version = "f25d8cf";
 
-    src = pkgs.fetchurl {
-      url = "https://github.com/catppuccin/gtk/releases/download/v1.0.3/catppuccin-mocha-mauve-standard+default.zip";
-      sha256 = "y6zaxhYfmMMV+4Z0DiFCbvbdpk8K1pFXzyjzod2kRv4=";
+    src = pkgs.fetchFromGitHub {
+      owner = "Fausto-Korpsvart";
+      repo = "Catppuccin-GTK-Theme";
+      rev = "f25d8cf688d8f224f0ce396689ffcf5767eb647e";
+      hash = "sha256-W+NGyPnOEKoicJPwnftq26iP7jya1ZKq38lMjx/k9ss=";
     };
 
-    nativeBuildInputs = with pkgs; [ unzip ];
+    nativeBuildInputs = with pkgs; [
+      bash
+      sassc
+      gtk-engine-murrine
+      gnome-themes-extra
+    ];
 
-    sourceRoot = ".";
+    dontFixup = true;
 
     installPhase = ''
-      mkdir -p $out/share/themes
-      cp -r catppuccin-mocha-mauve-standard+default* $out/share/themes/
+      runHook preInstall
 
-      # Also make config directories available for symlinking
+      cd themes
+      patchShebangs install.sh gtkrc.sh
+
+      mkdir -p $out/share/themes
+      ./install.sh -d $out/share/themes -n Catppuccin -t mauve -c dark -s standard
+
       mkdir -p $out/config
-      cp -r catppuccin-mocha-mauve-standard+default/gtk-3.0 $out/config/
-      cp -r catppuccin-mocha-mauve-standard+default/gtk-4.0 $out/config/
+      cp -r $out/share/themes/Catppuccin-Mauve-Dark/gtk-3.0 $out/config/
+      cp -r $out/share/themes/Catppuccin-Mauve-Dark/gtk-4.0 $out/config/
+
+      runHook postInstall
     '';
   };
 
@@ -93,8 +106,8 @@ in
 
       # Catppuccin GTK/Shell theme (ensure the name matches the package variant)
       theme = {
-        name = "catppuccin-mocha-mauve-standard+default";
-        package = catppuccinMochaMauve;
+        name = "Catppuccin-Mauve-Dark";
+        package = catppuccinKorpsvart;
       };
 
       cursorTheme = {
@@ -114,7 +127,10 @@ in
     home.packages = with pkgs; [
       breezexDark
       telaPurple
-      catppuccinMochaMauve
+      catppuccinKorpsvart
+      gtk-engine-murrine
+      gnome-themes-extra
+      sassc
     ];
   };
 }

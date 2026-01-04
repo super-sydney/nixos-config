@@ -21,7 +21,7 @@
       };
 
       "org/gnome/shell/extensions/user-theme" = {
-        name = "catppuccin-mocha-mauve-standard+default";
+        name = "Catppuccin-Mauve-Dark";
       };
     };
   };

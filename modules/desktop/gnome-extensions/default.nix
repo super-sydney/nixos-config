@@ -15,6 +15,7 @@ in
   imports = [
     ./appindicator.nix
     ./arcmenu.nix
+    ./battery-time.nix
     ./blur-my-shell.nix
     ./dash-to-dock.nix
     ../dconf

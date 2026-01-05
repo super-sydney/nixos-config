@@ -38,7 +38,26 @@
   services.gvfs.enable = true;
 
   # Thumbnails support via Tumbler
-  services.tumbler.enable = true;
+  environment.systemPackages = with pkgs; [
+    ffmpeg-headless
+    ffmpegthumbnailer
+    gdk-pixbuf
+
+    pkgs.libheif.bin # provides heif-thumbnailer (the program that generates HEIF thumbnails)
+    pkgs.libheif.out # provides heif.thumbnailer (allows for the viewing of HEIF thumbnails)
+
+    # For more newer AVIF specific support usually not needed if libheif is installed
+    pkgs.libavif
+
+    # For JXL(JPEG XL) support
+    pkgs.libjxl
+
+    # For WebP support
+    pkgs.webp-pixbuf-loader
+  ];
+  environment.pathsToLink = [
+    "share/thumbnailers"
+  ];
 
   # Bluetooth (BlueZ)
   hardware.bluetooth = {

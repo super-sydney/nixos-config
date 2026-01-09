@@ -18,6 +18,8 @@
 
     "org/gnome/shell/keybindings" = {
       show-screenshot-ui = [ "<Shift><Super>s" ];
+      toggle-application-view = [ ];
+      toggle-overview = [ "<Super>a" ];
     };
 
     "org/gnome/shell/app-switcher" = {

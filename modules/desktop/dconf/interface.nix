@@ -19,7 +19,7 @@
       clock-show-weekday = true;
       color-scheme = "prefer-dark";
       document-font-name = "Fira Sans 12";
-      enable-animations = true;
+      enable-animations = false;
       enable-hot-corners = false;
       font-antialiasing = "grayscale";
       font-hinting = "full";

@@ -17,6 +17,8 @@ in
   # Games
   osuLazer.enable = true;
   prismlauncher.enable = true;
+  cartridges.enable = true;
+  adwsteamgtk.enable = true;
 
   # Communication
   # discord.enable = true;
@@ -28,6 +30,7 @@ in
   jellyfinMediaPlayer.enable = true;
   qbittorrent.enable = true;
   vlc.enable = true;
+  monophony.enable = true;
 
   # Utilities
   calibre.enable = true;
@@ -45,6 +48,8 @@ in
   solaar.enable = true;
   wine.enable = true;
   zenBrowser.enable = true;
+  authenticator.enable = true;
+  hieroglyphic.enable = true;
 
   # Desktop
   gnome.enable = true;

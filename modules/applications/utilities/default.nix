@@ -14,4 +14,6 @@
   qmk = import ./qmk.nix;
   solaar = import ./solaar.nix;
   zenBrowser = import ./zen-browser.nix;
+  authenticator = import ./authenticator.nix;
+  hieroglyphic = import ./hieroglyphic.nix;
 }

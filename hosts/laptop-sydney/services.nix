@@ -23,7 +23,25 @@
   services.power-profiles-daemon.enable = false;
   services.upower.enable = true;
   services.thermald.enable = true;
-  services.auto-cpufreq.enable = true;
+  # services.auto-cpufreq.enable = true;
+  hardware.system76.enableAll = true;
+
+  # Powertop optimizations without USB autosuspend
+  powerManagement.powertop = {
+    enable = true;
+    postStart = ''
+      # Re-enable all USB devices after powertop runs
+      for device in /sys/bus/usb/devices/*/power/control; do
+        if [ -w "$device" ]; then
+          echo "on" > "$device"
+        fi
+      done
+    '';
+  };
+  services.udev.extraRules = ''
+    # Disable USB autosuspend for all devices
+    ACTION=="add", SUBSYSTEM=="usb", TEST=="power/control", ATTR{power/control}="on"
+  '';
 
   # XDG portals (GNOME primary with GTK fallback)
   xdg.portal = {

@@ -106,11 +106,13 @@
     after = [
       "systemd-modules-load.service"
       "dbus.service"
+      "system76-power.service"
     ];
-    wants = [ "system76-power-daemon.service" ];
+    requires = [ "system76-power.service" ];
     serviceConfig = {
       Type = "oneshot";
       ExecStart = "${pkgs.system76-power}/bin/system76-power graphics power off";
+      RemainAfterExit = true;
     };
   };
 

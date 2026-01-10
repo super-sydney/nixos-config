@@ -99,6 +99,21 @@
   # Default to AMD GPU driver
   services.xserver.videoDrivers = lib.mkDefault [ "amdgpu" ];
 
+  # Power down dGPU on boot by default via systemd oneshot service
+  systemd.services."system76-gpu-poweroff" = {
+    description = "Power off dGPU on boot (System76)";
+    wantedBy = [ "multi-user.target" ];
+    after = [
+      "systemd-modules-load.service"
+      "dbus.service"
+    ];
+    wants = [ "system76-power-daemon.service" ];
+    serviceConfig = {
+      Type = "oneshot";
+      ExecStart = "${pkgs.system76-power}/bin/system76-power graphics power off";
+    };
+  };
+
   # System modules (from /modules/nixos)
   hardware.keyboard.qmk.enable = true;
   fish.enable = true;
@@ -142,6 +157,9 @@
         "mem_sleep_default=deep"
         "pcie_aspm.policy=powersupersave"
       ];
+
+      # Keep dGPU powered for this specialisation
+      systemd.services."system76-gpu-poweroff".enable = lib.mkForce false;
     };
 
     # NVIDIA sync mode: Always use NVIDIA GPU
@@ -176,6 +194,9 @@
         "mem_sleep_default=deep"
         "pcie_aspm.policy=powersupersave"
       ];
+
+      # Keep dGPU powered for this specialisation
+      systemd.services."system76-gpu-poweroff".enable = lib.mkForce false;
     };
   };
   system.stateVersion = "25.05";

@@ -71,6 +71,7 @@ in
   gnome.extensions.just-perfection.enable = true;
   gnome.extensions.open-bar.enable = true;
   gnome.extensions.pop-shell.enable = true;
+  gnome.extensions.rounded-window-corners-reborn.enable = true;
   gnome.extensions.screen-rotate.enable = true;
   gnome.extensions.user-themes.enable = true;
   gnome.extensions.vitals.enable = true;

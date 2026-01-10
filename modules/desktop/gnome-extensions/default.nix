@@ -22,6 +22,7 @@ in
     ./just-perfection.nix
     ./open-bar.nix
     ./pop-shell.nix
+    ./rounded-window-corners-reborn.nix
     ./screen-rotate.nix
     ./user-themes.nix
     ./vitals.nix

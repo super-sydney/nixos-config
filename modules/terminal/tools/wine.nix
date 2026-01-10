@@ -14,7 +14,7 @@
 
   config = lib.mkIf config.wine.enable {
     home.packages = with pkgs; [
-      wine
+      wineWowPackages.stable
       winetricks
       protontricks
     ];

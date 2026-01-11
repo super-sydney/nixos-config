@@ -38,7 +38,7 @@ in
   gitkraken.enable = true;
   gnomeExtensionManager.enable = true;
   gnomeTweaks.enable = true;
-  inputRemapper.enable = true;
+  # inputRemapper.enable = true;
   obsidian.enable = true;
   opentabletdriver.enable = true;
   pikaBackup.enable = true;

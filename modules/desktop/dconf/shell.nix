@@ -18,7 +18,7 @@
 
     "org/gnome/shell/keybindings" = {
       show-screenshot-ui = [ "<Shift><Super>s" ];
-      toggle-application-view = [ ];
+      toggle-application-view = [ "<Super>d" ];
       toggle-overview = [ "<Super>a" ];
     };
 

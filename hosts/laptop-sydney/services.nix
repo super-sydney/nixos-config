@@ -28,7 +28,7 @@
     gnome-music
     # gnome-system-monitor
     # gnome-weather
-    loupe
+    # loupe
     # nautilus
     papers
     gnome-connections

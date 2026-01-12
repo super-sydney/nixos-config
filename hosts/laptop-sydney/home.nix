@@ -19,6 +19,7 @@ in
   prismlauncher.enable = true;
   cartridges.enable = true;
   adwsteamgtk.enable = true;
+  lutris.enable = true;
 
   # Communication
   # discord.enable = true;
@@ -48,7 +49,7 @@ in
   solaar.enable = true;
   wine.enable = true;
   zenBrowser.enable = true;
-  authenticator.enable = true;
+  protonAuthenticator.enable = true;
   hieroglyphic.enable = true;
 
   # Desktop

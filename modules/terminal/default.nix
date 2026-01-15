@@ -3,3 +3,4 @@
   kitty = import ./kitty.nix;
 }
 // (import ./tools)
+// (import ./languages)

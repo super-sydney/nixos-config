@@ -119,6 +119,7 @@
   # System modules (from /modules/nixos)
   hardware.keyboard.qmk.enable = true;
   nvtop.enable = true;
+  opentabletdriver.enable = true;
   steam.enable = true;
   virtualisation.enable = true;
   nautilusOpenAnyTerminal.enable = true;

@@ -41,7 +41,6 @@ in
   gnomeTweaks.enable = true;
   # inputRemapper.enable = true;
   obsidian.enable = true;
-  opentabletdriver.enable = true;
   pikaBackup.enable = true;
   protonvpnGui.enable = true;
   qdirstat.enable = true;

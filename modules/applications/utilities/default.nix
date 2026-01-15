@@ -6,7 +6,6 @@
   gnomeTweaks = import ./gnome-tweaks.nix;
   inputRemapper = import ./input-remapper.nix;
   obsidian = import ./obsidian.nix;
-  opentabletdriver = import ./opentabletdriver.nix;
   pikaBackup = import ./pika-backup.nix;
   piper = import ./piper.nix;
   protonvpnGui = import ./protonvpn-gui.nix;

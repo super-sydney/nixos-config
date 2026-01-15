@@ -13,6 +13,9 @@
   };
 
   config = lib.mkIf config.opentabletdriver.enable {
-    home.packages = with pkgs; [ opentabletdriver ];
+    hardware.opentabletdriver.enable = true;
+    boot.kernelModules = [ "uinput" ];
+
+    environment.systemPackages = with pkgs; [ opentabletdriver ];
   };
 }

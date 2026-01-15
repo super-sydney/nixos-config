@@ -118,7 +118,6 @@
 
   # System modules (from /modules/nixos)
   hardware.keyboard.qmk.enable = true;
-  fish.enable = true;
   nvtop.enable = true;
   steam.enable = true;
   virtualisation.enable = true;

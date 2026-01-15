@@ -13,8 +13,5 @@
       "networkmanager"
       "wheel"
     ];
-  }
-  // (lib.optionalAttrs config.fish.enable {
-    shell = pkgs.fish;
-  });
+  };
 }

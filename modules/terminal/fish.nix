@@ -14,7 +14,10 @@
 
   config = lib.mkIf config.fish.enable {
     programs.fish.enable = true;
-    home.packages = with pkgs; [ fish ];
+    programs.fish.interactiveShellInit = ''
+      set fish_greeting # disable greeting
+    '';
+
     home.sessionVariables.SHELL = "${pkgs.fish}/bin/fish";
   };
 }

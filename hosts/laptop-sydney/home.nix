@@ -6,20 +6,11 @@
   ...
 }:
 
-let
-  moduleSets = import ../../modules;
-in
 {
-  imports = builtins.attrValues moduleSets.homeManagerModules ++ [
+  imports = [
+    ../../modules/homeManager
     inputs.zen-browser.homeModules.beta
   ];
-
-  # Games
-  osuLazer.enable = true;
-  prismlauncher.enable = true;
-  cartridges.enable = true;
-  adwsteamgtk.enable = true;
-  lutris.enable = true;
 
   # Communication
   # discord.enable = true;
@@ -27,11 +18,18 @@ in
   signalDesktop.enable = true;
   vesktop.enable = true;
 
+  # Games
+  adwsteamgtk.enable = true;
+  cartridges.enable = true;
+  lutris.enable = true;
+  osuLazer.enable = true;
+  prismlauncher.enable = true;
+
   # Media
   jellyfinMediaPlayer.enable = true;
+  monophony.enable = true;
   qbittorrent.enable = true;
   vlc.enable = true;
-  monophony.enable = true;
 
   # Utilities
   calibre.enable = true;
@@ -39,21 +37,40 @@ in
   gitkraken.enable = true;
   gnomeExtensionManager.enable = true;
   gnomeTweaks.enable = true;
+  hieroglyphic.enable = true;
   # inputRemapper.enable = true;
   obsidian.enable = true;
   pikaBackup.enable = true;
+  piper.enable = true;
+  protonAuthenticator.enable = true;
   protonvpnGui.enable = true;
   qdirstat.enable = true;
   qmk.enable = true;
   solaar.enable = true;
-  wine.enable = true;
+  todoist.enable = true;
   zenBrowser.enable = true;
-  protonAuthenticator.enable = true;
-  hieroglyphic.enable = true;
 
   # Desktop
-  gnome.enable = true;
   gtkTheme.enable = true;
+
+  gnome = {
+    enable = true;
+
+    extensions = {
+      appindicator.enable = true;
+      arcmenu.enable = true;
+      blur-my-shell.enable = true;
+      battery-time.enable = true;
+      dash-to-dock.enable = true;
+      just-perfection.enable = true;
+      open-bar.enable = true;
+      pop-shell.enable = true;
+      rounded-window-corners-reborn.enable = true;
+      screen-rotate.enable = true;
+      user-themes.enable = true;
+      vitals.enable = true;
+    };
+  };
 
   # Editors
   vscode.enable = true;
@@ -65,21 +82,10 @@ in
   # Terminal
   fish.enable = true;
   kitty.enable = true;
-  git.enable = true;
 
-  # Gnome extensions
-  gnome.extensions.appindicator.enable = true;
-  gnome.extensions.arcmenu.enable = true;
-  gnome.extensions.blur-my-shell.enable = true;
-  gnome.extensions.battery-time.enable = true;
-  gnome.extensions.dash-to-dock.enable = true;
-  gnome.extensions.just-perfection.enable = true;
-  gnome.extensions.open-bar.enable = true;
-  gnome.extensions.pop-shell.enable = true;
-  gnome.extensions.rounded-window-corners-reborn.enable = true;
-  gnome.extensions.screen-rotate.enable = true;
-  gnome.extensions.user-themes.enable = true;
-  gnome.extensions.vitals.enable = true;
+  # Terminal tools
+  git.enable = true;
+  wine.enable = true;
 
   # Default applications
   xdg.mimeApps = {

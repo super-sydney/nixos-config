@@ -1,7 +1,9 @@
 {
-  nautilusOpenAnyTerminal = import ./nautilus-open-any-terminal.nix;
-  nvtop = import ./nvtop.nix;
-  opentabletdriver = import ./opentabletdriver.nix;
-  steam = import ./steam.nix;
-  virtualisation = import ./virtualisation.nix;
+  imports = [
+    ./nautilus-open-any-terminal.nix
+    ./nvtop.nix
+    ./opentabletdriver.nix
+    ./steam.nix
+    ./virtualisation.nix
+  ];
 }

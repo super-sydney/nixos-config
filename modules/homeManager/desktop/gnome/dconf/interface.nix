@@ -1,0 +1,34 @@
+{
+  config,
+  lib,
+  pkgs,
+  ...
+}:
+
+{
+  config = lib.mkIf config.gnome.dconf.enable {
+    home.packages = with pkgs; [
+      fira-code
+      fira-sans
+    ];
+
+    dconf.settings = {
+      "org/gnome/desktop/interface" = {
+        accent-color = "purple";
+        clock-format = "24h";
+        clock-show-seconds = true;
+        clock-show-weekday = true;
+        color-scheme = "prefer-dark";
+        document-font-name = "Fira Sans 12";
+        enable-animations = false;
+        enable-hot-corners = false;
+        font-antialiasing = "grayscale";
+        font-hinting = "full";
+        font-name = "Fira Sans 12";
+        gtk-enable-primary-paste = false;
+        monospace-font-name = "FiraCode Nerd Font Mono 11";
+        show-battery-percentage = true;
+      };
+    };
+  };
+}

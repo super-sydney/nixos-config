@@ -26,8 +26,6 @@
     }@inputs:
     let
       system = "x86_64-linux";
-      pkgs = import nixpkgs { inherit system; };
-      moduleSets = import ./modules;
     in
     {
 
@@ -37,13 +35,12 @@
           inherit system;
           specialArgs = { inherit inputs; };
           modules = [
-            { nixpkgs.config.allowUnfree = true; }
             home-manager.nixosModules.home-manager
-          ]
-          ++ builtins.attrValues moduleSets.nixosModules
-          ++ [
-            ./hosts/laptop-sydney
+            ./hosts/laptop-sydney # Host configuration
+            ./modules/nixos # System modules
             {
+              nixpkgs.config.allowUnfree = true; # Allow installation of unfree packages
+
               home-manager.useGlobalPkgs = true;
               home-manager.useUserPackages = true;
               home-manager.extraSpecialArgs = { inherit inputs; };

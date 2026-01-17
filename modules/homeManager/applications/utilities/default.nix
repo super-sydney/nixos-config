@@ -1,0 +1,21 @@
+{
+  imports = [
+    ./calibre.nix
+    ./gimp.nix
+    ./gitkraken.nix
+    ./gnome-extension-manager.nix
+    ./gnome-tweaks.nix
+    ./hieroglyphic.nix
+    ./input-remapper.nix
+    ./obsidian.nix
+    ./pika-backup.nix
+    ./piper.nix
+    ./proton-authenticator.nix
+    ./protonvpn-gui.nix
+    ./qdirstat.nix
+    ./qmk.nix
+    ./solaar.nix
+    ./todoist.nix
+    ./zen-browser.nix
+  ];
+}

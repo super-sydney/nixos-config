@@ -1,5 +1,6 @@
 {
   imports = [
+    ./flatpak.nix
     ./nautilus-open-any-terminal.nix
     ./nvtop.nix
     ./opentabletdriver.nix

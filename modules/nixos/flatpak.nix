@@ -13,12 +13,7 @@
   };
 
   config = lib.mkIf config.flatpak.enable {
-    services.flatpak = {
-      enable = true;
-      packages = [
-        "com.github.tchx84.Flatseal"
-      ];
-    };
+    services.flatpak.enable = true;
 
     xdg.portal = {
       enable = true;

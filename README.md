@@ -29,11 +29,11 @@ If your system hostname differs from `laptop-sydney`, you'll need to:
 4. **Review and customize the configuration:**
 
 Check the following files to match your system:
-   - `hosts/laptop-sydney/users.nix` - User accounts and settings
-   - `hosts/laptop-sydney/network.nix` - Network configuration
-   - `hosts/laptop-sydney/localisation.nix` - Time zone and locale
-   - `modules/desktop/gtk.nix`, `dconf/` - Desktop environment settings
-   - Any application modules you want to enable/disable
+   - `hosts/laptop-sydney/configuration/users.nix` - User accounts and settings
+   - `hosts/laptop-sydney/configuration/network.nix` - Network configuration
+   - `hosts/laptop-sydney/configuration/localisation.nix` - Time zone and locale
+   - `modules/homeManager/desktop/gtk/` - GTK theme settings
+   - `modules/homeManager/desktop/gnome/` - GNOME-specific configuration
 
 5. **Build and activate the configuration:**
 
@@ -86,10 +86,13 @@ hosts/laptop-sydney/
   ├── default.nix              # NixOS settings (system-wide)
   ├── home.nix                 # Home-manager settings (user-specific)
   ├── hardware-configuration.nix # Hardware info (auto-generated)
-  ├── localisation.nix         # Time, locale, keyboard
-  ├── network.nix              # Network settings
-  ├── services.nix             # System services (display manager, audio)
-  └── users.nix                # User accounts
+  └── configuration/           # Configuration modules
+      ├── boot.nix             # Boot and bootloader settings
+      ├── gpu.nix              # GPU configuration and specialisations
+      ├── localisation.nix     # Time, locale, keyboard
+      ├── network.nix          # Network settings
+      ├── services.nix         # System services (display manager, audio)
+      └── users.nix            # User accounts
 ```
 
 #### `modules/` - Reusable Configuration Modules
@@ -99,19 +102,23 @@ Modules that can be enabled/disabled. They're organized by category, and each di
 ```
 modules/
 ├── nixos/                    # System-level modules
-│   ├── default.nix           # Exports: { flatpak, fish, steam, ... }
+│   ├── default.nix           # Exports: { flatpak, steam, ... }
 │   ├── flatpak.nix
-│   ├── fish.nix
-│   └── steam.nix
+│   ├── steam.nix
+│   └── virtualisation.nix
 │
-├── applications/             # User-level apps
-│   ├── default.nix           # Exports and merges subdirs
-│   ├── communication/
-│   ├── games/
-│   ├── media/
-│   └── utilities/
-│
-├── desktop/, editors/, languages/, terminal/  # Similar structure
+├── homeManager/              # User-level configuration
+│   ├── applications/         # Apps (games, media, utilities, etc.)
+│   ├── desktop/              # Desktop environment
+│   │   ├── default.nix       # Imports gnome and gtk
+│   │   ├── gtk/              # GTK theme (cross-DE)
+│   │   └── gnome/            # GNOME-specific
+│   │       ├── dconf/        # GNOME dconf settings
+│   │       └── extensions/   # GNOME Shell extensions
+│   ├── editors/              # Text editors and IDEs
+│   ├── languages/            # Programming language tools
+│   ├── terminal/             # Terminal and shell config
+│   └── default.nix
 │
 └── default.nix               # Final assembly:
                               # { nixosModules, homeManagerModules }
@@ -189,6 +196,7 @@ The `#laptop-sydney` tells Nix which host config to use from `flake.nix`'s `nixo
 ## Themes
 
 - GTK & GNOME Shell: Catppuccin Mauve Dark (Korpsvart) — https://github.com/Fausto-Korpsvart/Catppuccin-GTK-Theme
-  - Installed via module `modules/desktop/gtk.nix` (gtkTheme option); includes shell/GTK assets and stage-placed `gtk-3.0`/`gtk-4.0` configs.
+  - Installed via module `modules/homeManager/desktop/gtk/` (gtkTheme option); works across all desktop environments
+  - GNOME-specific settings via `modules/homeManager/desktop/gnome/dconf/`
 - Icons: Tela purple dark — https://github.com/vinceliuice/Tela-icon-theme
 - Cursor: BreezeX Dark — https://github.com/ful1e5/BreezeX_Cursor

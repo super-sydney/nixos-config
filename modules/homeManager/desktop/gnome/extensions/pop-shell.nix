@@ -5,6 +5,15 @@
   ...
 }:
 
+let
+  pop-shell-no-icon = pkgs.gnomeExtensions.pop-shell.overrideAttrs (oldAttrs: {
+    postBuild = ''
+      ${oldAttrs.postBuild or ""}
+      substituteInPlace _build/extension.js \
+        --replace-fail "panel.addToStatusArea('pop-shell', indicator.button);" "// panel.addToStatusArea('pop-shell', indicator.button);"
+    '';
+  });
+in
 {
   options.gnome.extensions.pop-shell.enable = lib.mkOption {
     type = lib.types.bool;
@@ -13,7 +22,7 @@
   };
 
   config = lib.mkIf config.gnome.extensions.pop-shell.enable {
-    home.packages = [ pkgs.gnomeExtensions.pop-shell ];
+    home.packages = [ pop-shell-no-icon ];
     dconf.settings = {
       "org/gnome/shell" = {
         enabled-extensions = [ "pop-shell@system76.com" ];

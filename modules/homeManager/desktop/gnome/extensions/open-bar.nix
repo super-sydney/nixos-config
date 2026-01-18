@@ -95,6 +95,7 @@
           "0.651"
           "0.969"
         ];
+        neon = false;
 
         # Popup Menus
         menustyle = false;

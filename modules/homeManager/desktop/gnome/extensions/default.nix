@@ -14,6 +14,7 @@
     ./just-perfection.nix
     ./open-bar.nix
     ./pop-shell.nix
+    ./quicksettings-audio-devices-renamer.nix
     ./rounded-window-corners-reborn.nix
     ./screen-rotate.nix
     ./user-themes.nix

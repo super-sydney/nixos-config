@@ -65,6 +65,7 @@
       just-perfection.enable = true;
       open-bar.enable = true;
       pop-shell.enable = true;
+      quicksettings-audio-devices-renamer.enable = true;
       rounded-window-corners-reborn.enable = true;
       screen-rotate.enable = true;
       user-themes.enable = true;

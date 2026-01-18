@@ -99,6 +99,9 @@
 
     # For WebP support
     pkgs.webp-pixbuf-loader
+
+    # Audio utilities
+    pulseaudio # for pactl, which the quick settings audio panel gnome extension uses
   ];
   environment.pathsToLink = [
     "share/thumbnailers"

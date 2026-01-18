@@ -29,8 +29,8 @@
         animation = 1;
         background-menu = true;
         clock-menu = true;
-        clock-menu-position = 1;
-        clock-menu-position-offset = 6;
+        clock-menu-position = 0;
+        clock-menu-position-offset = 0;
         controls-manager-spacing-size = 0;
         dash = true;
         dash-icon-size = 0;

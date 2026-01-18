@@ -13,5 +13,6 @@
       "networkmanager"
       "wheel"
     ];
+    shell = if config.programs.fish.enable then "${pkgs.fish}/bin/fish" else "${pkgs.bash}/bin/bash";
   };
 }

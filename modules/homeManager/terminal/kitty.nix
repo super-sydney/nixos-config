@@ -16,7 +16,9 @@
     programs.kitty = {
       enable = true;
       themeFile = "Catppuccin-Mocha";
+      shellIntegration.enableFishIntegration = lib.mkIf config.fish.enable true;
       settings = {
+        shell = lib.mkIf config.fish.enable "${pkgs.fish}/bin/fish";
         hide_window_decorations = "yes";
         font_family = "Fira Code";
         disable_ligatures = "always";

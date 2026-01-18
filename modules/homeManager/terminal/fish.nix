@@ -19,5 +19,7 @@
     '';
 
     home.sessionVariables.SHELL = "${pkgs.fish}/bin/fish";
+
+    home.shell.enableFishIntegration = true;
   };
 }

@@ -19,6 +19,7 @@
 
       "org/gnome/shell/mutter" = {
         attach-modal-dialogs = false;
+        workspaces-only-on-primary = false;
       };
 
       "org/gnome/shell/keybindings" = {

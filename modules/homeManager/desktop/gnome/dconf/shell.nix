@@ -11,15 +11,18 @@
         disable-user-extensions = false;
         favorite-apps = [
           "zen-beta.desktop"
-          "org.gnome.Nautilus.desktop"
-          "obsidian.desktop"
           "org.jellyfin.JellyfinDesktop.desktop"
+          "page.kramo.Cartridges.desktop"
         ];
       };
 
-      "org/gnome/shell/mutter" = {
+      "org/gnome/mutter" = {
         attach-modal-dialogs = false;
         workspaces-only-on-primary = false;
+        dynamic-workspaces = true;
+        edge-tiling = false;
+        center-new-windows = false;
+        auto-maximize = false;
       };
 
       "org/gnome/shell/keybindings" = {

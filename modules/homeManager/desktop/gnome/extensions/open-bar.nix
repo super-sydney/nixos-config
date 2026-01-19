@@ -171,7 +171,7 @@
         apply-menu-notif = true;
         apply-menu-shell = true;
         apply-accent-shell = true;
-        apply-all-shell = true;
+        apply-all-shell = false;
       };
     };
   };

@@ -21,7 +21,8 @@
   # Games
   adwsteamgtk.enable = true;
   cartridges.enable = true;
-  lutris.enable = true;
+  heroic.enable = true;
+  # lutris.enable = true;
   osuLazer.enable = true;
   prismlauncher.enable = true;
 

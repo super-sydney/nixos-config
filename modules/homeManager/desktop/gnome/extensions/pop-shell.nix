@@ -55,10 +55,10 @@ in
         tile-move-down = [ ];
         tile-move-up = [ ];
         tile-move-right = [ ];
-        tile-move-left-global = [ ];
-        tile-move-down-global = [ ];
-        tile-move-up-global = [ ];
-        tile-move-right-global = [ ];
+        tile-move-left-global = [ "<Super><Shift>Left" ];
+        tile-move-down-global = [ "<Super><Shift>Down" ];
+        tile-move-up-global = [ "<Super><Shift>Up" ];
+        tile-move-right-global = [ "<Super><Shift>Right" ];
         tile-orientation = [ ];
         tile-resize-left = [ ];
         tile-resize-down = [ ];
@@ -70,10 +70,10 @@ in
         tile-swap-right = [ ];
         pop-workspace-down = [ ];
         pop-workspace-up = [ ];
-        pop-monitor-down = [ ]; # Up/down doesn't work correctly, so use left/right instead
+        pop-monitor-down = [ ];
         pop-monitor-up = [ ];
-        pop-monitor-left = [ "<Super><Shift>Up" ];
-        pop-monitor-right = [ "<Super><Shift>Down" ];
+        pop-monitor-left = [ ];
+        pop-monitor-right = [ ];
       };
     };
   };

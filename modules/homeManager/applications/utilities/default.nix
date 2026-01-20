@@ -7,6 +7,7 @@
     ./gnome-tweaks.nix
     ./hieroglyphic.nix
     ./input-remapper.nix
+    ./obs-studio.nix
     ./obsidian.nix
     ./pika-backup.nix
     ./piper.nix

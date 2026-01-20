@@ -40,6 +40,7 @@
   gnomeTweaks.enable = true;
   hieroglyphic.enable = true;
   # inputRemapper.enable = true;
+  # obs-studio.enable = true;
   obsidian.enable = true;
   pikaBackup.enable = true;
   piper.enable = true;

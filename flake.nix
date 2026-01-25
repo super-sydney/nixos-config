@@ -14,6 +14,8 @@
       inputs.nixpkgs.follows = "nixpkgs";
       inputs.home-manager.follows = "home-manager";
     };
+
+    dw-proton.url = "github:Momoyaan/dwproton-flake";
   };
 
   outputs =
@@ -22,6 +24,7 @@
       nixpkgs,
       home-manager,
       zen-browser,
+      dw-proton,
       ...
     }@inputs:
     let

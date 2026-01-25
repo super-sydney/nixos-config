@@ -18,7 +18,7 @@
   # Default to AMD GPU driver
   services.xserver.videoDrivers = lib.mkDefault [ "amdgpu" ];
 
-  # Power down dGPU on boot by default via systemd oneshot service
+  # Power down dGPU on boot via systemd oneshot service
   systemd.services."system76-gpu-poweroff" = {
     description = "Power off dGPU on boot (System76)";
     wantedBy = [ "multi-user.target" ];
@@ -33,6 +33,21 @@
       ExecStart = "${pkgs.system76-power}/bin/system76-power graphics power off";
       RemainAfterExit = true;
     };
+  };
+
+  # Power down dGPU after resume from suspend (only when in integrated mode)
+  environment.etc."systemd/system-sleep/99-system76-gpu-poweroff" = {
+    text = ''
+      #! /bin/sh
+      case "$1" in
+        post)
+          if [ "$( ${pkgs.system76-power}/bin/system76-power graphics )" = "integrated" ]; then
+            ${pkgs.system76-power}/bin/system76-power graphics power off
+          fi
+          ;;
+      esac
+    '';
+    mode = "0755";
   };
 
   # GPU specialisations

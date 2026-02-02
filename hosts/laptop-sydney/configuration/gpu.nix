@@ -32,6 +32,7 @@
       Type = "oneshot";
       ExecStart = "${pkgs.system76-power}/bin/system76-power graphics power off";
       RemainAfterExit = true;
+      TimeoutStartSec = 10;
     };
   };
 

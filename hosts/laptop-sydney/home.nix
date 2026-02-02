@@ -102,6 +102,9 @@
       "x-scheme-handler/about" = "zen-beta.desktop";
       "x-scheme-handler/unknown" = "zen-beta.desktop";
 
+      # PDF - Zen Browser
+      "application/pdf" = "zen-beta.desktop";
+
       # Video - VLC
       "video/mp4" = "vlc.desktop";
       "video/x-matroska" = "vlc.desktop";

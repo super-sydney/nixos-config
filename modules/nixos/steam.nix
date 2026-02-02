@@ -17,7 +17,7 @@
     programs.steam.enable = true;
     programs.steam.extraCompatPackages = with pkgs; [
       proton-ge-bin
-      inputs.dw-proton.packages.${pkgs.system}.default
+      inputs.dw-proton.packages.${pkgs.stdenv.hostPlatform.system}.default
     ];
 
     programs.steam.gamescopeSession.enable = true;

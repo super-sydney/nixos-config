@@ -27,21 +27,18 @@
       dw-proton,
       ...
     }@inputs:
-    let
-      system = "x86_64-linux";
-    in
     {
 
       # Define multiple NixOS configurations keyed by host name.
       nixosConfigurations = {
         "laptop-sydney" = nixpkgs.lib.nixosSystem {
-          inherit system;
           specialArgs = { inherit inputs; };
           modules = [
             home-manager.nixosModules.home-manager
             ./hosts/laptop-sydney # Host configuration
             ./modules/nixos # System modules
             {
+              nixpkgs.hostPlatform = "x86_64-linux";
               nixpkgs.config.allowUnfree = true; # Allow installation of unfree packages
 
               home-manager.useGlobalPkgs = true;

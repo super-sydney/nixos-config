@@ -23,7 +23,7 @@
       "org/gnome/shell/extensions/quicksettings-audio-devices-renamer" = {
         input-names-map = with lib.hm.gvariant; [
           (mkDictionaryEntry [
-            "Internal Microphone – Family 17h/19h/1ah HD Audio Controller"
+            "Internal Microphone – Ryzen HD Audio Controller"
             "Laptop"
           ])
         ];
@@ -33,11 +33,11 @@
             "Speakers"
           ])
           (mkDictionaryEntry [
-            "Speakers – Family 17h/19h/1ah HD Audio Controller"
+            "Speakers – Ryzen HD Audio Controller"
             "Laptop"
           ])
           (mkDictionaryEntry [
-            "Headphones – Family 17h/19h/1ah HD Audio Controller"
+            "Headphones – Ryzen HD Audio Controller"
             "IEMs"
           ])
         ];

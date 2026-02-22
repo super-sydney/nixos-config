@@ -13,6 +13,10 @@
   };
 
   config = lib.mkIf config.python.enable {
-    home.packages = with pkgs; [ uv ];
+    home.packages = with pkgs; [
+      python313
+      uv
+    ];
+    programs.nix-ld.enable = true;
   };
 }

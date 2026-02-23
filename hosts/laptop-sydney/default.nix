@@ -43,6 +43,7 @@
   # System modules (from /modules/nixos)
   hardware.keyboard.qmk.enable = true;
   nautilusOpenAnyTerminal.enable = true;
+  nix-ld.enable = true;
   nvtop.enable = true;
   opentabletdriver.enable = true;
   steam.enable = true;

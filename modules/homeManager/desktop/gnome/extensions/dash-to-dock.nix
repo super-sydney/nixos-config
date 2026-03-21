@@ -37,6 +37,7 @@
         multi-monitor = true;
         require-pressure-to-show = false;
         show-delay = 0;
+        show-dock-urgent-notify = false;
         show-mounts = false;
         show-show-apps-button = false;
         show-trash = false;

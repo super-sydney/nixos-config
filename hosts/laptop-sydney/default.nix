@@ -45,7 +45,7 @@
   nautilusOpenAnyTerminal.enable = true;
   nix-ld.enable = true;
   nvtop.enable = true;
-  opentabletdriver.enable = true;
+  # opentabletdriver.enable = true;
   steam.enable = true;
   virtualisation.enable = true;
 

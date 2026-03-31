@@ -110,6 +110,8 @@ in
         package = catppuccinKorpsvart;
       };
 
+      gtk4.theme = config.gtk.theme;
+
       cursorTheme = {
         name = "BreezeX-Dark";
         package = breezexDark;

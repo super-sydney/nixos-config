@@ -7,12 +7,13 @@
     ./gnome-tweaks.nix
     ./hieroglyphic.nix
     ./input-remapper.nix
+    ./libreoffice.nix
     ./obs-studio.nix
     ./obsidian.nix
     ./pika-backup.nix
     ./piper.nix
     ./proton-authenticator.nix
-    ./protonvpn-gui.nix
+    ./proton-vpn.nix
     ./qdirstat.nix
     ./qmk.nix
     ./solaar.nix

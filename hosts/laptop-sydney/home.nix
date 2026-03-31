@@ -40,12 +40,13 @@
   gnomeTweaks.enable = true;
   hieroglyphic.enable = true;
   # inputRemapper.enable = true;
+  libreoffice.enable = true;
   # obs-studio.enable = true;
   obsidian.enable = true;
   pikaBackup.enable = true;
   piper.enable = true;
   protonAuthenticator.enable = true;
-  protonvpnGui.enable = true;
+  proton-vpn.enable = true;
   qdirstat.enable = true;
   qmk.enable = true;
   solaar.enable = true;

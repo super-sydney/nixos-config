@@ -48,8 +48,8 @@
   protonAuthenticator.enable = true;
   proton-vpn.enable = true;
   qdirstat.enable = true;
-  qmk.enable = true;
-  solaar.enable = true;
+  # qmk.enable = true;
+  # solaar.enable = true;
   todoist.enable = true;
   zenBrowser.enable = true;
 

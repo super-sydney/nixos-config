@@ -6,6 +6,7 @@
     ./nvtop.nix
     ./opentabletdriver.nix
     ./steam.nix
+    ./syncthing.nix
     ./virtualisation.nix
   ];
 }

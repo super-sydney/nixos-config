@@ -47,6 +47,7 @@
   nvtop.enable = true;
   # opentabletdriver.enable = true;
   steam.enable = true;
+  syncthing.enable = true;
   virtualisation.enable = true;
 
   system.stateVersion = "25.05";

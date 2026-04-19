@@ -40,6 +40,22 @@
             {
               nixpkgs.hostPlatform = "x86_64-linux";
               nixpkgs.config.allowUnfree = true; # Allow installation of unfree packages
+              nixpkgs.overlays = [
+                (final: prev: {
+                  gnomeExtensions = prev.gnomeExtensions // {
+                    dash-to-dock = prev.gnomeExtensions.dash-to-dock.overrideAttrs (old: {
+                      version = "105";
+
+                      src = prev.fetchFromGitHub {
+                        owner = "micheleg";
+                        repo = "dash-to-dock";
+                        rev = "extensions.gnome.org-v105";
+                        hash = "sha256-nVzCbYDEsik8lT8W6FvQwPah+lSZQOptI7m/4/lYpSM=";
+                      };
+                    });
+                  };
+                })
+              ];
 
               home-manager.useGlobalPkgs = true;
               home-manager.useUserPackages = true;

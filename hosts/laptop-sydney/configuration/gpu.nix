@@ -30,8 +30,31 @@
     requires = [ "system76-power.service" ];
     serviceConfig = {
       Type = "oneshot";
+      ExecCondition = ''
+        ${pkgs.bash}/bin/bash -c '
+          for dev in /sys/bus/pci/devices/*; do
+            vendor=$(cat "$dev/vendor" 2>/dev/null || echo "")
+
+            # 0x10de is nvidia
+            [ "$vendor" = "0x10de" ] || continue
+
+            # If runtime_status exists
+            if [ -f "$dev/power/runtime_status" ]; then
+              state=$(cat "$dev/power/runtime_status")
+              # exit 0 if not suspended, exit 1 if already suspended
+              [ "$state" != "suspended" ] && exit 0
+              exit 1
+            fi
+
+            # If runtime_status does not exist, assume it's on and exit 0
+            exit 0
+          done
+
+          # No nvidia found
+          exit 1
+        '
+      '';
       ExecStart = "${pkgs.system76-power}/bin/system76-power graphics power off";
-      RemainAfterExit = true;
       TimeoutStartSec = 10;
     };
   };

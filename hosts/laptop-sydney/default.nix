@@ -13,27 +13,36 @@
   ];
 
   # Nix settings
-  nix.settings = {
-    experimental-features = [
-      "nix-command"
-      "flakes"
-    ];
-    auto-optimise-store = true;
-  };
+  nix = {
+    optimise.automatic = true;
 
-  nix.optimise.automatic = true;
-  nix.gc = {
-    automatic = true;
-    dates = "weekly";
-    options = "--delete-older-than 7d";
+    settings = {
+      auto-optimise-store = true;
+
+      experimental-features = [
+        "nix-command"
+        "flakes"
+      ];
+    };
+
+    gc = {
+      automatic = true;
+      dates = "weekly";
+      options = "--delete-older-than 7d";
+      persistent = true;
+    };
   };
 
   # Automatic system updates
   system.autoUpgrade = {
     enable = true;
+    operation = "boot"; # Don't switch to new config until next boot
+    runGarbageCollection = true;
     flake = inputs.self.outPath;
     flags = [
       "--print-build-logs"
+      "--update-input"
+      "--commit-lock-file"
     ];
     dates = "daily";
     persistent = true;

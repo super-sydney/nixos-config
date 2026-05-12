@@ -11,6 +11,7 @@
     ./obs-studio.nix
     ./obsidian.nix
     ./pika-backup.nix
+    ./picard.nix
     ./piper.nix
     ./proton-authenticator.nix
     ./proton-vpn.nix

@@ -51,6 +51,7 @@
   qdirstat.enable = true;
   # qmk.enable = true;
   # solaar.enable = true;
+  sound-juicer.enable = true;
   todoist.enable = true;
   zenBrowser.enable = true;
 

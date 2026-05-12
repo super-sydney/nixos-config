@@ -18,6 +18,7 @@
     ./qdirstat.nix
     ./qmk.nix
     ./solaar.nix
+    ./sound-juicer.nix
     ./todoist.nix
     ./zen-browser.nix
   ];

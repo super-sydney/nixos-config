@@ -1,6 +1,6 @@
 {
   imports = [
-    ./jellyfin-media-player.nix
+    ./jellyfin-desktop.nix
     ./monophony.nix
     ./qbittorrent.nix
     ./vlc.nix

@@ -27,7 +27,7 @@
   prismlauncher.enable = true;
 
   # Media
-  jellyfinMediaPlayer.enable = true;
+  jellyfin-desktop.enable = true;
   monophony.enable = true;
   qbittorrent.enable = true;
   vlc.enable = true;

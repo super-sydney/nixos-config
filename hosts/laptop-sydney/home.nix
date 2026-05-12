@@ -27,6 +27,7 @@
   prismlauncher.enable = true;
 
   # Media
+  freetube.enable = true;
   jellyfin-desktop.enable = true;
   monophony.enable = true;
   qbittorrent.enable = true;

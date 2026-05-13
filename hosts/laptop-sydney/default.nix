@@ -27,7 +27,7 @@
 
     gc = {
       automatic = true;
-      dates = "weekly";
+      dates = "daily";
       options = "--delete-older-than 7d";
       persistent = true;
     };
@@ -42,9 +42,16 @@
     flags = [
       "--print-build-logs"
       "--update-input"
+      "nixpkgs"
+      "--update-input"
+      "home-manager"
+      "--update-input"
+      "zen-browser"
+      "--update-input"
+      "dw-proton"
       "--commit-lock-file"
     ];
-    dates = "daily";
+    dates = "weekly";
     persistent = true;
     allowReboot = false;
   };

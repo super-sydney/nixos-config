@@ -9,11 +9,12 @@
   options.virtualisation.enable = lib.mkOption {
     type = lib.types.bool;
     default = false;
-    description = "Enable virtualization stack (libvirtd, virt-manager).";
+    description = "Enable virtualization stack (libvirtd, virt-manager, docker).";
   };
 
   config = lib.mkIf config.virtualisation.enable {
     programs.virt-manager.enable = true;
     virtualisation.libvirtd.enable = true;
+    virtualisation.docker.enable = true;
   };
 }

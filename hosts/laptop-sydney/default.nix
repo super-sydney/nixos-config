@@ -33,12 +33,21 @@
     };
   };
 
+  # Allow root auto-upgrade to commit the lock file
+  environment.etc."gitconfig".text = ''
+    [safe]
+      directory = /home/sydney/.config/nixos
+    [user]
+      name = Sydney
+      email = sydneykho@proton.me
+  '';
+
   # Automatic system updates
   system.autoUpgrade = {
     enable = true;
     operation = "boot"; # Don't switch to new config until next boot
     runGarbageCollection = true;
-    flake = inputs.self.outPath;
+    flake = "/home/sydney/.config/nixos";
     flags = [
       "--print-build-logs"
       "--update-input"

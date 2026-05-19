@@ -13,7 +13,7 @@
   ];
 
   # Communication
-  # discord.enable = true;
+  discord.enable = true;
   mattermost.enable = true;
   signalDesktop.enable = true;
   vesktop.enable = true;

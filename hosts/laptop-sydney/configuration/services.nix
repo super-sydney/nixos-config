@@ -75,7 +75,6 @@
     enable = true;
     extraPortals = [
       pkgs.xdg-desktop-portal-gnome
-      pkgs.xdg-desktop-portal-gtk
     ];
   };
 
@@ -105,6 +104,9 @@
   ];
   environment.pathsToLink = [
     "share/thumbnailers"
+    "/share/xdg-desktop-portal"
+    "/share/applications"
+
   ];
 
   # Bluetooth (BlueZ)

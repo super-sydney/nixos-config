@@ -30,6 +30,7 @@
   freetube.enable = true;
   jellyfin-desktop.enable = true;
   monophony.enable = true;
+  nicotine-plus.enable = true;
   qbittorrent.enable = true;
   vlc.enable = true;
 

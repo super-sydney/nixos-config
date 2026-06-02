@@ -9,9 +9,9 @@
     dconf.settings = {
       "org/gnome/shell" = {
         disable-user-extensions = false;
+        disable-extensions-version-validation = true;
         favorite-apps = [
           "zen-beta.desktop"
-          "org.jellyfin.JellyfinDesktop.desktop"
           "page.kramo.Cartridges.desktop"
         ];
       };

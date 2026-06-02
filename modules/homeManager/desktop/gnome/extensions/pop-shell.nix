@@ -6,7 +6,20 @@
 }:
 
 let
-  pop-shell-no-icon = pkgs.gnomeExtensions.pop-shell.overrideAttrs (oldAttrs: {
+  pop-shell-gnome50 = pkgs.gnomeExtensions.pop-shell.overrideAttrs (oldAttrs: {
+    src = pkgs.fetchFromGitHub {
+      owner = "pop-os";
+      repo = "shell";
+      rev = "master_noble";
+      sha256 = "sha256-MmHoOxymo0QSRbRcSbFiv82+QWAwIwXwg/wyGQGVYiI=";
+    };
+    postPatch = (oldAttrs.postPatch or "") + ''
+      # Ensure GNOME 50 is supported in metadata
+      sed -i 's/"shell-version": \["49"\]/"shell-version": ["49", "50"]/g' data/metadata.json.in || true
+    '';
+  });
+
+  pop-shell-no-icon = pop-shell-gnome50.overrideAttrs (oldAttrs: {
     postBuild = ''
       ${oldAttrs.postBuild or ""}
       substituteInPlace _build/extension.js \
@@ -22,7 +35,7 @@ in
   };
 
   config = lib.mkIf config.gnome.extensions.pop-shell.enable {
-    home.packages = [ pop-shell-no-icon ];
+    home.packages = [ pop-shell-gnome50 ];
     dconf.settings = {
       "org/gnome/shell" = {
         enabled-extensions = [ "pop-shell@system76.com" ];

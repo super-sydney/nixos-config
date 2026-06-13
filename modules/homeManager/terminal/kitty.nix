@@ -24,6 +24,7 @@
         disable_ligatures = "always";
         enable_audio_bell = "no";
         window_padding_width = 4;
+        term = "xterm-256color";
       };
     };
   };

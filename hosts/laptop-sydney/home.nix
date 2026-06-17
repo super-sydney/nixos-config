@@ -27,7 +27,7 @@
   prismlauncher.enable = true;
 
   # Media
-  aonsoku.enable = true;
+  feishin.enable = true;
   freetube.enable = true;
   jellyfin-desktop.enable = true;
   monophony.enable = true;

@@ -1,7 +1,6 @@
 {
   imports = [
-./aonsoku.nix
-
+    ./feishin.nix
     ./freetube.nix
     ./jellyfin-desktop.nix
     ./monophony.nix

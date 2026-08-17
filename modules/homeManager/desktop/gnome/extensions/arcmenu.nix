@@ -37,7 +37,7 @@
         menu-button-left-click-action = "ArcMenu";
         menu-button-padding = -1; # default
         menu-button-position-offset = 0;
-        menu-layout = "Runner";
+        menu-layout = "runner";
         multi-monitor = true;
         override-menu-theme = false;
         position-in-panel = "Left";

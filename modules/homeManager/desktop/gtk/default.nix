@@ -64,7 +64,6 @@ let
     nativeBuildInputs = with pkgs; [
       bash
       sassc
-      gtk-engine-murrine
       gnome-themes-extra
     ];
 
@@ -130,7 +129,6 @@ in
       breezexDark
       telaPurple
       catppuccinKorpsvart
-      gtk-engine-murrine
       gnome-themes-extra
       sassc
     ];

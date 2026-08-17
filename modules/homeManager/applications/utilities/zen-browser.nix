@@ -15,6 +15,7 @@
   config = lib.mkIf config.zenBrowser.enable {
     # Install Zen Browser as a package
     programs.zen-browser.enable = true;
+    programs.zen-browser.setAsDefaultBrowser = true;
 
     # Create profiles.ini only if it doesn't already exist
     # This ensures existing profiles are preserved across rebuilds

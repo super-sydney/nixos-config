@@ -29,11 +29,11 @@
       };
 
       "org/gnome/shell/extensions/arcmenu" = {
-        hide-overview-on-arcmenu-open = true;
-        hide-overview-on-startup = true;
+        hide-overview-on-arcmenu-open = false;
+        hide-overview-on-startup = false;
         menu-button-appearance = "Icon";
-        menu-button-icon = "Distro_Icon";
-        distro-icon = 22;
+        menu-button-icon = "resource:///org/gnome/shell/extensions/arcmenu/icons/scalable/actions/distro-nixos-symbolic.svg";
+        menu-button-icon-size = 20;
         menu-button-left-click-action = "ArcMenu";
         menu-button-padding = -1; # default
         menu-button-position-offset = 0;

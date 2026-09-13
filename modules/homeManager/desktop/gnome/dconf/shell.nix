@@ -13,6 +13,8 @@
         favorite-apps = [
           "zen-beta.desktop"
           "page.kramo.Cartridges.desktop"
+          "freetube.desktop"
+          "feishin.desktop"
         ];
       };
 

@@ -15,6 +15,11 @@
       inputs.home-manager.follows = "home-manager";
     };
 
+    openlogi = {
+      url = "github:AprilNEA/OpenLogi";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
     dw-proton.url = "github:Momoyaan/dwproton-flake";
   };
 

@@ -46,6 +46,7 @@
   libreoffice.enable = true;
   obs-studio.enable = true;
   obsidian.enable = true;
+  openlogi.enable = true;
   picard.enable = true;
   pikaBackup.enable = true;
   piper.enable = true;

@@ -10,6 +10,7 @@
     ./libreoffice.nix
     ./obs-studio.nix
     ./obsidian.nix
+    ./openlogi.nix
     ./pika-backup.nix
     ./picard.nix
     ./piper.nix

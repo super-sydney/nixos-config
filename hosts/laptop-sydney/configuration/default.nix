@@ -1,5 +1,6 @@
 {
   imports = [
+    ./backup.nix
     ./boot.nix
     ./gpu.nix
     ./localisation.nix

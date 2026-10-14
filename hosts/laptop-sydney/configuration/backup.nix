@@ -33,5 +33,9 @@
       Persistent = true;
       RandomizedDelaySec = "30m";
     };
+
+    extraOptions = [
+      "sftp.command='ssh -F /root/.ssh/config -o BatchMode=yes hetzner-restic -s sftp'"
+    ];
   };
 }

@@ -23,6 +23,7 @@
   cartridges.enable = true;
   heroic.enable = true;
   # lutris.enable = true;
+  olympus.enable = true;
   osuLazer.enable = true;
   prismlauncher.enable = true;
 
@@ -77,7 +78,7 @@
       quick-settings-audio-panel.enable = true;
       quicksettings-audio-devices-renamer.enable = true;
       rounded-window-corners-reborn.enable = true;
-      screen-rotate.enable = true;
+      # screen-rotate.enable = true;
       user-themes.enable = true;
       vitals.enable = true;
     };

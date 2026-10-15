@@ -16,6 +16,7 @@
 
     # Exclude caches and disposable data.
     extraBackupArgs = [
+      "-vv"
       "--cleanup-cache"
       "--exclude-caches"
       "--iexclude-file=/home/sydney/.config/nixos/hosts/laptop-sydney/configuration/restic-excludes.txt"

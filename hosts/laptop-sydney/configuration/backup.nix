@@ -16,7 +16,7 @@
 
     # Exclude caches and disposable data.
     extraBackupArgs = [
-      "-vv"
+      "-v"
       "--cleanup-cache"
       "--exclude-caches"
       "--iexclude-file=/home/sydney/.config/nixos/hosts/laptop-sydney/configuration/restic-excludes.txt"
@@ -36,7 +36,7 @@
     };
 
     extraOptions = [
-      "sftp.command='ssh -F /root/.ssh/config -o BatchMode=yes hetzner-restic -s sftp'"
+      "sftp.command='ssh -F /root/.ssh/config -o BatchMode=yes u685425.your-storagebox.de -s sftp'"
     ];
   };
 }

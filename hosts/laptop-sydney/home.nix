@@ -20,7 +20,7 @@
 
   # Games
   adwsteamgtk.enable = true;
-  cartridges.enable = true;
+  # cartridges.enable = true;
   heroic.enable = true;
   # lutris.enable = true;
   olympus.enable = true;
@@ -31,8 +31,8 @@
   feishin.enable = true;
   freetube.enable = true;
   jellyfin-desktop.enable = true;
-  monophony.enable = true;
-  nicotine-plus.enable = true;
+  # monophony.enable = true;
+  # nicotine-plus.enable = true;
   qbittorrent.enable = true;
   vlc.enable = true;
 
@@ -45,12 +45,12 @@
   hieroglyphic.enable = true;
   # inputRemapper.enable = true;
   libreoffice.enable = true;
-  obs-studio.enable = true;
+  # obs-studio.enable = true;
   obsidian.enable = true;
   openlogi.enable = true;
   picard.enable = true;
-  pikaBackup.enable = true;
-  piper.enable = true;
+  # pikaBackup.enable = true;
+  # piper.enable = true;
   protonAuthenticator.enable = true;
   proton-vpn.enable = true;
   qdirstat.enable = true;

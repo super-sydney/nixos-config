@@ -17,7 +17,7 @@
       enable = true;
       settings = {
         autoStartMinimized = true;
-      }
+      };
     };
   };
 }

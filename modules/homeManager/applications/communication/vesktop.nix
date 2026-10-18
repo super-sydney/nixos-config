@@ -15,9 +15,6 @@
   config = lib.mkIf config.vesktop.enable {
     programs.vesktop = {
       enable = true;
-      settings = {
-        autoStartMinimized = true;
-      };
     };
   };
 }

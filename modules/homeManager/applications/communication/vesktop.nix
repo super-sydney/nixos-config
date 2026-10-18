@@ -13,6 +13,8 @@
   };
 
   config = lib.mkIf config.vesktop.enable {
-    home.packages = with pkgs; [ vesktop ];
+    programs.vesktop = {
+      enable = true;
+    };
   };
 }

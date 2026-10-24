@@ -29,4 +29,3 @@ Games/
 **/.ruff_cache/
 
 .ssh/hetzner
-/home/sydney/.config/vid

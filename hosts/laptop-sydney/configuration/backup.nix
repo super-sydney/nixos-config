@@ -39,4 +39,9 @@
       "sftp.command='ssh -F /root/.ssh/config -o BatchMode=yes u685425.your-storagebox.de -s sftp'"
     ];
   };
+
+  systemd.services."restic-backups-laptop".serviceConfig = {
+    Restart = "on-failure";
+    RestartSec = "2min";
+  };
 }
